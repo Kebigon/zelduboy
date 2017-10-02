@@ -1,9 +1,23 @@
-#include <Arduino.h>
+#include <Arduboy2.h>
+#include "Game.hpp"
+#include "chunksdata.h"
 
-void setup() {
-    // put your setup code here, to run once:
+Arduboy2 arduboy;
+Game game;
+
+void setup()
+{
+	arduboy.begin();
+	arduboy.setFrameRate(30);
+
+	Serial.begin(9600);
 }
 
-void loop() {
-    // put your main code here, to run repeatedly:
+void loop()
+{
+	if (!(arduboy.nextFrame()))
+		return;
+
+	game.handleInput();
+	game.display();
 }
