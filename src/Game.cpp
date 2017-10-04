@@ -40,16 +40,18 @@ void Game::display()
 	// first we clear our screen to black
 	arduboy.clear();
 
-	draw(map_house, MAP_HOUSE_WIDTH, player);
+	draw(mapHouse, player);
 
 	player.draw();
 
 	arduboy.display();
 }
 
-void Game::draw(const uint8_t currentChunk[], uint8_t chunkWidth,
-				Player & player)
+void Game::draw(Map & currentMap, Player & player)
 {
+	uint8_t mapWidth = currentMap.getWidth();
+	uint8_t mapHeight = currentMap.getHeight();
+
 	int16_t displayStartTileX = pixelToTileCoord(player.x - 56);
 	int16_t displayStartTileY = pixelToTileCoord(player.y - 24);
 
@@ -60,15 +62,13 @@ void Game::draw(const uint8_t currentChunk[], uint8_t chunkWidth,
 	{
 		for (int16_t tileY = displayStartTileY; tileY <= displayStopTileY; tileY++)
 		{
-			if (tileX < 0 || tileX >= MAP_HOUSE_WIDTH || tileY < 0 || tileY >= MAP_HOUSE_HEIGHT)
+			if (tileX < 0 || tileX >= mapWidth || tileY < 0 || tileY >= mapHeight)
 				continue; // Do nothing
-
-			uint16_t tileIdx = tileY * chunkWidth + tileX;
 
 			int16_t x = (tileX - displayStartTileX) * TILE_SIZE - (player.x + 8) % TILE_SIZE;
 			int16_t y = (tileY - displayStartTileY) * TILE_SIZE - (player.y + 8) % TILE_SIZE;
 
-			uint8_t tile =pgm_read_byte_near(map_house + tileIdx);
+			uint8_t tile = currentMap.getTile(tileX, tileY);
 
 			Sprites::drawSelfMasked(x, y, tileset, tile);
 		}
