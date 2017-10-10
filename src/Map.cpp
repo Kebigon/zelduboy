@@ -64,7 +64,7 @@ bool Map::isPassable(uint8_t tileX, uint8_t tileY) const
 
 	uint16_t arrayAddr = tileY * width + tileX;
 	uint16_t byteAddr = arrayAddr >> 3; // arrayAddr / 8
-	uint8_t  bitAddr = 0x07 - (byteAddr & 0x07);
+	uint8_t  bitAddr = 0x07 - (arrayAddr & 0x07);
 
 	return (pgm_read_byte(mapPassable + byteAddr) >> bitAddr) & 0x01;
 }
