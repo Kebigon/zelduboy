@@ -7,13 +7,14 @@
 class Game
 {
 public:
+	Game();
 	void handleInput();
 	void display();
-	void draw(Map &, Player &);
+	void drawMap();
 
 	static int16_t pixelToTileCoord(int16_t);
 private:
-	Player player;
+	Player * player;
 };
 
 #endif

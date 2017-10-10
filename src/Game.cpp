@@ -4,34 +4,40 @@
 #include "chunksdata.h"
 #include "bitmaps.h"
 
+Game::Game()
+{
+	Location * loc = new Location(mapHouse, 16, 16);
+	player = new Player(loc);
+}
+
 void Game::handleInput()
 {
-	player.isMoving = false;
+	player->isMoving = false;
 
 	if (arduboy.pressed(LEFT_BUTTON))
 	{
-		player.x--;
-		player.direction = LEFT;
-		player.isMoving = true;
+		player->getLocation()->updateX(-1);
+		player->direction = Direction::LEFT;
+		player->isMoving = true;
 	}
 	else if (arduboy.pressed(RIGHT_BUTTON))
 	{
-		player.direction = RIGHT;
-		player.x++;
-		player.isMoving = true;
+		player->direction = Direction::RIGHT;
+		player->getLocation()->updateX(1);
+		player->isMoving = true;
 	}
 
 	if (arduboy.pressed(UP_BUTTON))
 	{
-		player.direction = UP;
-		player.y--;
-		player.isMoving = true;
+		player->direction = Direction::UP;
+		player->getLocation()->updateY(-1);
+		player->isMoving = true;
 	}
 	else if (arduboy.pressed(DOWN_BUTTON))
 	{
-		player.direction = DOWN;
-		player.y++;
-		player.isMoving = true;
+		player->direction = Direction::DOWN;
+		player->getLocation()->updateY(1);
+		player->isMoving = true;
 	}
 }
 
@@ -40,42 +46,67 @@ void Game::display()
 	// first we clear our screen to black
 	arduboy.clear();
 
-	draw(mapHouse, player);
+	drawMap();
 
-	player.draw();
+	player->draw();
 
 	arduboy.display();
 }
 
-void Game::draw(Map & currentMap, Player & player)
+void Game::drawMap()
 {
-	uint8_t mapWidth = currentMap.getWidth();
-	uint8_t mapHeight = currentMap.getHeight();
+	Location * playerLocation = player->getLocation();
+	uint16_t playerX = playerLocation->getX();
+	uint16_t playerY = playerLocation->getY();
 
-	int16_t displayStartTileX = pixelToTileCoord(player.x - 56);
-	int16_t displayStartTileY = pixelToTileCoord(player.y - 24);
+	// TODO: find why this dos not return the right instance
+	// Map map = playerLocation->getMap();
+	Map map = mapHouse;
 
-	int16_t displayStopTileX = pixelToTileCoord(player.x + 56 + 16 - 1);
-	int16_t displayStopTileY = pixelToTileCoord(player.y + 24 + 16 - 1);
+	uint16_t displayStartX, displayStartY;
+
+	switch (player->getHorizontalPosition())
+	{
+		case PlayerHorizontalPosition::LEFT:
+			displayStartX = 0;
+			break;
+		case PlayerHorizontalPosition::CENTER:
+			displayStartX = playerX - PLAYER_CENTER_POS_LEFT;
+			break;
+		case PlayerHorizontalPosition::RIGHT:
+			displayStartX = map.getWidth() - SCREEN_WIDTH;
+			break;
+	}
+
+	switch (player->getVerticalPosition())
+	{
+		case PlayerVerticalPosition::TOP:
+			displayStartY = 0;
+			break;
+		case PlayerVerticalPosition::CENTER:
+			displayStartY = playerY - PLAYER_CENTER_POS_TOP;
+			break;
+		case PlayerVerticalPosition::BOTTOM:
+			displayStartY = map.getHeight() - SCREEN_HEIGHT;
+			break;
+	}
+
+	uint8_t displayStartTileX = displayStartX >> 4; // displayStartX / 16
+	uint8_t displayStartTileY = displayStartY >> 4; // displayStartY / 16
+
+	uint8_t displayStopTileX = (displayStartX + 127)  >> 4;
+	uint8_t displayStopTileY = (displayStartY + 63)  >> 4;
 
 	for (int16_t tileX = displayStartTileX; tileX <= displayStopTileX; tileX++)
 	{
 		for (int16_t tileY = displayStartTileY; tileY <= displayStopTileY; tileY++)
 		{
-			if (tileX < 0 || tileX >= mapWidth || tileY < 0 || tileY >= mapHeight)
-				continue; // Do nothing
+			int16_t x = (tileX - displayStartTileX) * TILE_SIZE - (displayStartX) % TILE_SIZE;
+			int16_t y = (tileY - displayStartTileY) * TILE_SIZE - (displayStartY) % TILE_SIZE;
 
-			int16_t x = (tileX - displayStartTileX) * TILE_SIZE - (player.x + 8) % TILE_SIZE;
-			int16_t y = (tileY - displayStartTileY) * TILE_SIZE - (player.y + 8) % TILE_SIZE;
-
-			uint8_t tile = currentMap.getTile(tileX, tileY);
+			uint8_t tile = map.getTile(tileX, tileY);
 
 			Sprites::drawSelfMasked(x, y, tileset, tile);
 		}
 	}
-}
-
-int16_t Game::pixelToTileCoord(int16_t pixelCoord)
-{
-	return pixelCoord >> 4;
 }

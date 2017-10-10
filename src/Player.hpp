@@ -1,9 +1,9 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include <stdint.h>
+#include "Location.hpp"
 
-enum Direction
+enum class Direction
 {
 	DOWN,
 	LEFT,
@@ -11,17 +11,32 @@ enum Direction
 	RIGHT
 };
 
+enum class PlayerHorizontalPosition
+{
+	LEFT,
+	CENTER,
+	RIGHT
+};
+
+enum class PlayerVerticalPosition
+{
+	TOP,
+	CENTER,
+	BOTTOM
+};
+
 class Player
 {
-public:
-	Player();
-	void draw();
+	Location * location;
 
+public:
+	Player(Location *);
+	Location * getLocation() const;
+	void draw();
 	bool isMoving;
-	uint8_t currentChunk[];
-	int16_t x;
-	int16_t y;
 	Direction direction;
+	PlayerHorizontalPosition getHorizontalPosition() const;
+	PlayerVerticalPosition getVerticalPosition() const;
 };
 
 #endif

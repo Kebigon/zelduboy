@@ -1,24 +1,44 @@
 #include "Map.hpp"
 
 #include <avr/pgmspace.h>
+#include "Arduboy2.h"
+#include "chunksdata.h"
 
-Map::Map(const uint8_t * map)
-	:map(map)
-	,width(pgm_read_byte(map))
-	,height(pgm_read_byte(map + 1))
-	,mapTiles(map + 2)
-	,mapPassable(mapTiles + width * height)
-{}
+Map::Map(const uint8_t * mapt)
+	: width(pgm_read_byte(mapt))
+	, height(pgm_read_byte(mapt + 1))
+	, mapTiles(mapt + 2)
+	, mapPassable(mapt + 2 + pgm_read_byte(mapt) * pgm_read_byte(mapt + 1))
+{
+	map = mapHouseData;
+	if (map == mapHouseData)
+		checkMap = false;
+}
 
-uint8_t Map::getWidth() const
+// Width of the map in pixels
+uint16_t Map::getWidth() const
+{
+	return width << 4;
+}
+
+// Height of the map in pixels
+uint16_t Map::getHeight() const
+{
+	return height << 4;
+}
+
+// Width of the map in tiles
+uint8_t Map::getTileWidth() const
 {
 	return width;
 }
 
-uint8_t Map::getHeight() const
+// Height of the map in tiles
+uint8_t Map::getTileHeight() const
 {
 	return height;
 }
+
 
 uint16_t Map::getTileAddress(uint8_t tileX, uint8_t tileY) const
 {
@@ -31,7 +51,9 @@ uint8_t Map::getTile(uint8_t tileX, uint8_t tileY) const
 	if (tileX >= width || tileY >= height)
 		return 0; // Default tile
 
-	return pgm_read_byte(mapTiles + getTileAddress(tileX, tileY));
+	uint8_t tileAddress = getTileAddress(tileX, tileY);
+
+	return pgm_read_byte(mapTiles + tileAddress);
 }
 
 bool Map::isPassable(uint8_t tileX, uint8_t tileY) const
