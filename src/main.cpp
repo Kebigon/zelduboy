@@ -2,6 +2,8 @@
 #include "Game.hpp"
 #include "chunksdata.h"
 
+Map mapHouse(mapHouseData);
+
 Arduboy2 arduboy;
 Game game;
 
