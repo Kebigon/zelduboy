@@ -75,6 +75,7 @@ void Game::display()
 	arduboy.clear();
 
 	drawMap();
+	drawMenu();
 
 	player->draw();
 
@@ -102,7 +103,7 @@ void Game::drawMap()
 			displayStartX = playerX - PLAYER_CENTER_POS_LEFT;
 			break;
 		case PlayerHorizontalPosition::RIGHT:
-			displayStartX = map.getWidth() - SCREEN_WIDTH;
+			displayStartX = map.getWidth() - MAP_CANVAS_WIDTH;
 			break;
 	}
 
@@ -115,7 +116,7 @@ void Game::drawMap()
 			displayStartY = playerY - PLAYER_CENTER_POS_TOP;
 			break;
 		case PlayerVerticalPosition::BOTTOM:
-			displayStartY = map.getHeight() - SCREEN_HEIGHT;
+			displayStartY = map.getHeight() - MAP_CANVAS_HEIGHT;
 			break;
 	}
 
@@ -134,7 +135,21 @@ void Game::drawMap()
 
 			uint8_t tile = map.getTile(tileX, tileY);
 
-			Sprites::drawSelfMasked(x, y, tileset, tile);
+			Sprites::drawSelfMasked(MAP_CANVAS_X + x, MAP_CANVAS_Y + y, tileset, tile);
 		}
 	}
+}
+
+void Game::drawMenu()
+{
+	for (uint16_t x = 0; x != MAP_CANVAS_X; x++)
+		arduboy.drawFastVLine(x, 0, 64, 1);
+
+	arduboy.drawChar(4, 0, 'A', 0, 1, 1);
+	arduboy.drawChar(0, 8, '[', 0, 1, 1);
+	arduboy.drawChar(8, 8, ']', 0, 1, 1);
+
+	arduboy.drawChar(4, 16, 'B', 0, 1, 1);
+	arduboy.drawChar(0, 24, '[', 0, 1, 1);
+	arduboy.drawChar(8, 24, ']', 0, 1, 1);
 }

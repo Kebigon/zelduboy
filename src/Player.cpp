@@ -56,7 +56,7 @@ void Player::draw()
 			displayPlayerX = PLAYER_CENTER_POS_LEFT;
 			break;
 		case PlayerHorizontalPosition::RIGHT:
-			displayPlayerX = playerX - (map.getWidth() - SCREEN_WIDTH);
+			displayPlayerX = playerX - (map.getWidth() - MAP_CANVAS_WIDTH);
 			break;
 	}
 
@@ -69,7 +69,7 @@ void Player::draw()
 			displayPlayerY = PLAYER_CENTER_POS_TOP;
 			break;
 		case PlayerVerticalPosition::BOTTOM:
-			displayPlayerY = playerY - (map.getHeight() - SCREEN_HEIGHT);
+			displayPlayerY = playerY - (map.getHeight() - MAP_CANVAS_HEIGHT);
 			break;
 	}
 
@@ -92,6 +92,6 @@ void Player::draw()
 	}
 
 	//Sprites::drawPlusMask(x, y, link_plus_mask, frame);
-	Sprites::drawPlusMask(displayPlayerX, displayPlayerY, link_plus_mask, frame);
+	Sprites::drawPlusMask(MAP_CANVAS_X + displayPlayerX, MAP_CANVAS_Y + displayPlayerY, link_plus_mask, frame);
 	// Sprites::drawPlusMask((128 - 16) / 2, (64 - 16) / 2, link_plus_mask, frame);
 }

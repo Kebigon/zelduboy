@@ -11,6 +11,7 @@ public:
 	void handleInput();
 	void display();
 	void drawMap();
+	void drawMenu();
 
 	static int16_t pixelToTileCoord(int16_t);
 private:
