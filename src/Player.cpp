@@ -8,6 +8,7 @@
 Player::Player(Location * location)
 	: location(location)
 	, isMoving(false)
+	, direction(Direction::DOWN)
 {}
 
 Location * Player::getLocation() const
