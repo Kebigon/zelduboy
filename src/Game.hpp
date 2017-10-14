@@ -1,7 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "Player.hpp"
+#include "entity/Player.hpp"
 
 class Game
 {
