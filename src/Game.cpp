@@ -145,11 +145,12 @@ void Game::drawMenu()
 	for (uint16_t x = 0; x != MAP_CANVAS_X; x++)
 		arduboy.drawFastVLine(x, 0, 64, 1);
 
-	arduboy.drawChar(4, 0, 'A', 0, 1, 1);
-	arduboy.drawChar(0, 8, '[', 0, 1, 1);
-	arduboy.drawChar(8, 8, ']', 0, 1, 1);
+	drawMenuItem(0, 1, 'A', 0);
+	drawMenuItem(0, 18, 'B', 1);
+}
 
-	arduboy.drawChar(4, 16, 'B', 0, 1, 1);
-	arduboy.drawChar(0, 24, '[', 0, 1, 1);
-	arduboy.drawChar(8, 24, ']', 0, 1, 1);
+void Game::drawMenuItem(uint8_t x, uint8_t y, char button, uint8_t item)
+{
+	arduboy.drawChar(x + 1, y + 4, button, 0, 1, 1);
+	Sprites::drawPlusMask(x + 7, y, items_plus_mask, item);
 }

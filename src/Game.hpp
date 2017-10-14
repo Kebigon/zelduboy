@@ -12,6 +12,7 @@ public:
 	void display();
 	void drawMap();
 	void drawMenu();
+	void drawMenuItem(uint8_t, uint8_t, char, uint8_t);
 
 	static int16_t pixelToTileCoord(int16_t);
 private:
