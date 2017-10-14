@@ -1,8 +1,7 @@
 #include "Game.hpp"
 
 #include "globals.h"
-#include "chunksdata.h"
-#include "bitmaps.h"
+#include "data/chunksdata.h"
 
 Game::Game()
 {

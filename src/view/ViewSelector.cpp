@@ -1,7 +1,7 @@
 #include "ViewSelector.hpp"
 
 #include "globals.h"
-#include "bitmaps.h"
+#include "../data/bitmaps.h"
 
 ViewSelector::ViewSelector(Game *game)
 	: View(game)

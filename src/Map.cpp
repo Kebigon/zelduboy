@@ -2,7 +2,7 @@
 
 #include <avr/pgmspace.h>
 #include "Arduboy2.h"
-#include "chunksdata.h"
+#include "data/chunksdata.h"
 
 Map::Map(const uint8_t * mapt)
 	: width(pgm_read_byte(mapt))

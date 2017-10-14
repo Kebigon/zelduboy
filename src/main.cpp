@@ -1,7 +1,7 @@
 #include <Arduboy2.h>
 #include "Game.hpp"
 #include "view/ViewSelector.hpp"
-#include "chunksdata.h"
+#include "data/chunksdata.h"
 
 Map *mapHouse = new Map(mapHouseData);
 

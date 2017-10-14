@@ -1,8 +1,8 @@
 #include "MapView.hpp"
 
 #include "globals.h"
-#include "chunksdata.h"
-#include "bitmaps.h"
+#include "../data/chunksdata.h"
+#include "../data/bitmaps.h"
 
 MapView::MapView(Game *game)
 	: View(game)

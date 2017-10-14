@@ -2,7 +2,6 @@
 
 #include <Arduboy2.h>
 #include <Sprites.h>
-#include "bitmaps.h"
 #include "globals.h"
 
 Player::Player(Location * location)
