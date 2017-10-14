@@ -10,3 +10,4 @@ Please find below the resources I use which I didn't make myself.
 
 * from tile-001.png to tile-013.png : [RPG Dungeon](https://opengameart.org/content/rpg-dungeon) by [Tyran Cordine](https://opengameart.org/users/tyran-cordine)
 * from link-001.png to link-007.png : [Link](https://www.spriters-resource.com/game_boy_gbc/thelegendofzeldalinksawakeningdx/sheet/9436/) by [BruceJuice](https://www.spriters-resource.com/submitter/BruceJuice/)
+* from item-000.png to item-011.png : [Items](https://www.spriters-resource.com/game_boy_gbc/thelegendofzeldalinksawakeningdx/sheet/9450/) by [BruceJuice](https://www.spriters-resource.com/submitter/BruceJuice/)
