@@ -1,6 +1,7 @@
 #ifndef CHUNKSDATA_H
 #define CHUNKSDATA_H
 
+#include <Arduboy2.h>
 #include "Map.hpp"
 
 #define MAP_HOUSE_ID 0

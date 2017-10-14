@@ -136,6 +136,7 @@ void MapView::drawPlayer(Player *player)
 	uint16_t playerX = location->getX();
 	uint16_t playerY = location->getY();
 	Map *map = location->getMap();
+
 	uint8_t displayPlayerX, displayPlayerY;
 
 	switch (player->getHorizontalPosition())
@@ -164,7 +165,6 @@ void MapView::drawPlayer(Player *player)
 			break;
 	}
 
-
 	uint8_t frame = static_cast<int>(player->direction) << 1;
 
 	if (player->isMoving)
@@ -173,16 +173,14 @@ void MapView::drawPlayer(Player *player)
 		{
 			case Direction::LEFT:
 			case Direction::RIGHT:
-				frame += (location->getX() >> 2) % 2;
+				frame += (playerX >> 2) % 2;
 				break;
 			case Direction::UP:
 			case Direction::DOWN:
-				frame += (location->getY() >> 2) % 2;
+				frame += (playerY >> 2) % 2;
 				break;
 		}
 	}
-
-	//Sprites::drawPlusMask(x, y, link_plus_mask, frame);
+	
 	Sprites::drawPlusMask(MAP_CANVAS_X + displayPlayerX, MAP_CANVAS_Y + displayPlayerY, link_plus_mask, frame);
-	// Sprites::drawPlusMask((128 - 16) / 2, (64 - 16) / 2, link_plus_mask, frame);
 }

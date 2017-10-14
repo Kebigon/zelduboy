@@ -1,44 +1,33 @@
 #include "Map.hpp"
 
 #include <avr/pgmspace.h>
-#include "Arduboy2.h"
-#include "data/chunksdata.h"
 
-Map::Map(const uint8_t * mapt)
-	: width(pgm_read_byte(mapt))
-	, height(pgm_read_byte(mapt + 1))
-	, mapTiles(mapt + 2)
-	, mapPassable(mapt + 2 + pgm_read_byte(mapt) * pgm_read_byte(mapt + 1))
-{
-	map = mapHouseData;
-	if (map == mapHouseData)
-		checkMap = false;
-}
+Map::Map(const uint8_t * map)
+	: width(pgm_read_byte(map))
+	, height(pgm_read_byte(map + 1))
+	, mapTiles(map + 2)
+	, mapPassable(map + 2 + pgm_read_byte(map) * pgm_read_byte(map + 1))
+{}
 
-// Width of the map in pixels
 uint16_t Map::getWidth() const
 {
 	return width << 4;
 }
 
-// Height of the map in pixels
 uint16_t Map::getHeight() const
 {
 	return height << 4;
 }
 
-// Width of the map in tiles
 uint8_t Map::getTileWidth() const
 {
 	return width;
 }
 
-// Height of the map in tiles
 uint8_t Map::getTileHeight() const
 {
 	return height;
 }
-
 
 uint16_t Map::getTileAddress(uint8_t tileX, uint8_t tileY) const
 {

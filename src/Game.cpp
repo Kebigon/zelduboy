@@ -1,12 +1,12 @@
 #include "Game.hpp"
 
-#include "globals.h"
 #include "data/chunksdata.h"
 
 Game::Game()
 {
-	Location * loc = new Location(mapHouse, 16, 16);
-	player = new Player(loc);
+	// TODO: load game state from EEPROM
+	Location * location = new Location(mapHouse, 16, 16);
+	player = new Player(location);
 }
 
 Player * Game::getPlayer() const
