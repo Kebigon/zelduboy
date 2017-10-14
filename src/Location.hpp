@@ -5,13 +5,13 @@
 
 class Location
 {
-	Map map;
+	Map *map;
 	uint16_t x;
 	uint16_t y;
 
 public:
-	Location (const Map &, const uint16_t, const uint16_t);
-	Map getMap() const;
+	Location(Map *map, const uint16_t, const uint16_t);
+	Map * getMap() const;
 	uint16_t getX() const;
 	uint16_t getY() const;
 	uint8_t getTileX() const;

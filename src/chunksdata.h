@@ -5,7 +5,7 @@
 
 #define MAP_HOUSE_ID 0
 
-extern Map mapHouse;
+extern Map *mapHouse;
 const unsigned char PROGMEM mapHouseData[]  =
 {
 	// width, height,

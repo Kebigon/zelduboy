@@ -1,12 +1,12 @@
 #include "Location.hpp"
 
-Location::Location(const Map & map,  uint16_t x,  uint16_t y)
+Location::Location(Map *map,  uint16_t x,  uint16_t y)
 	: map(map)
 	, x(x)
 	, y(y)
 {}
 
-Map Location::getMap() const
+Map * Location::getMap() const
 {
 	return map;
 }

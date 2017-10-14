@@ -1,6 +1,7 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
+#include "inventory/Inventory.hpp"
 #include "Location.hpp"
 
 enum class Direction
@@ -27,10 +28,12 @@ enum class PlayerVerticalPosition
 
 class Player
 {
+	Inventory * inventory = new Inventory();
 	Location * location;
 
 public:
 	Player(Location *);
+	Inventory * getInventory() const;
 	Location * getLocation() const;
 	void draw();
 	bool isMoving;
