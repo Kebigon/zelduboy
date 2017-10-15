@@ -181,6 +181,6 @@ void MapView::drawPlayer(Player *player)
 				break;
 		}
 	}
-	
+
 	Sprites::drawPlusMask(MAP_CANVAS_X + displayPlayerX, MAP_CANVAS_Y + displayPlayerY, link_plus_mask, frame);
 }
