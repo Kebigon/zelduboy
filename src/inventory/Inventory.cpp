@@ -1,12 +1,21 @@
 #include "Inventory.hpp"
 
-bool Inventory::addItem(ItemStack & newItem)
+Inventory::Inventory()
 {
-	if (newItem.getType() == ItemType::NONE)
+	itemA = new ItemStack(ItemType::SWORD);
+	itemB = new ItemStack(ItemType::BOMB, 10);
+
+	for (int i = 0; i != INVENTORY_SIZE; i++)
+		items[i] = new ItemStack();
+}
+
+bool Inventory::addItem(ItemStack * newItem)
+{
+	if (newItem->getType() == ItemType::NONE)
 		return true;
 
 	for (uint8_t i = 0; i != INVENTORY_SIZE; i++)
-		if (items[i].getType() == ItemType::NONE)
+		if (items[i]->getType() == ItemType::NONE)
 			items[i] = newItem;
 
 	return false;
@@ -20,5 +29,29 @@ bool Inventory::removeItem(ItemType itemType, uint8_t amount)
 
 ItemStack * Inventory::getItem(uint8_t index) const
 {
-	return &items[index];
+	return items[index];
+}
+
+ItemStack * Inventory::getItemA() const
+{
+	return itemA;
+}
+
+ItemStack * Inventory::getItemB() const
+{
+	return itemB;
+}
+
+void Inventory::switchItemA(uint8_t index)
+{
+	ItemStack * tmp = itemA;
+	itemA = items[index];
+	items[index] = tmp;
+}
+
+void Inventory::switchItemB(uint8_t index)
+{
+	ItemStack * tmp = itemB;
+	itemB = items[index];
+	items[index] = tmp;
 }

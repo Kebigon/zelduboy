@@ -3,18 +3,24 @@
 
 #include "ItemStack.hpp"
 
-#define ITEM_A 0
-#define ITEM_B 1
 #define INVENTORY_SIZE 10
 
 class Inventory
 {
-	ItemStack items[INVENTORY_SIZE];
+	ItemStack * items[INVENTORY_SIZE];
+	ItemStack * itemA;
+	ItemStack * itemB;
 
 public:
-	bool addItem(ItemStack &);
+	Inventory();
+	bool addItem(ItemStack *);
 	bool removeItem(ItemType itemType, uint8_t = 1);
 	ItemStack * getItem(uint8_t) const;
+
+	ItemStack * getItemA() const;
+	ItemStack * getItemB() const;
+	void switchItemA(uint8_t index);
+	void switchItemB(uint8_t index);
 };
 
 #endif

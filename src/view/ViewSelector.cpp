@@ -41,8 +41,8 @@ void ViewSelector::drawMenu()
 
 	Inventory *inventory = game->getPlayer()->getInventory();
 
-	drawMenuItem(0, 1, 'A', inventory->getItem(ITEM_A));
-	drawMenuItem(0, 18, 'B', inventory->getItem(ITEM_B));
+	drawMenuItem(0, 1, 'A', inventory->getItemA());
+	drawMenuItem(0, 18, 'B', inventory->getItemB());
 }
 
 void ViewSelector::drawMenuItem(uint8_t x, uint8_t y, char button, ItemStack * item)

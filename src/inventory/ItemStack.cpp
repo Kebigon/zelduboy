@@ -9,3 +9,8 @@ ItemType ItemStack::getType() const
 {
 	return type;
 }
+
+uint8_t ItemStack::getAmount() const
+{
+	return amount;
+}
