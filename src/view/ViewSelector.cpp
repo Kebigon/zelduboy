@@ -14,7 +14,8 @@ void ViewSelector::handleInput()
 {
 	arduboy.pollButtons();
 
-	if (arduboy.justPressed(LEFT_BUTTON) && arduboy.justPressed(RIGHT_BUTTON))
+	if ((arduboy.justPressed(LEFT_BUTTON) && arduboy.pressed(RIGHT_BUTTON))
+			|| (arduboy.pressed(LEFT_BUTTON) && arduboy.justPressed(RIGHT_BUTTON)))
 	{
 		currentView = currentView == mapView ? (View*)inventoryView : (View*)mapView;
 		return;
