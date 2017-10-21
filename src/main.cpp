@@ -5,6 +5,7 @@
 
 Map *mapHouse = new Map(mapHouseData);
 
+uint8_t frameCounter = 0;
 Arduboy2 arduboy;
 Game *game;
 ViewSelector *viewSelector;
@@ -26,6 +27,8 @@ void loop()
 {
 	if (!(arduboy.nextFrame()))
 		return;
+
+	frameCounter++;
 
 	viewSelector->handleInput();
 	viewSelector->draw();
