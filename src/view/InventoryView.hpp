@@ -9,7 +9,8 @@
 class InventoryView : public View
 {
 	void drawInventory(Inventory *inventory);
-	void drawItemStack(uint8_t x, uint8_t y, ItemStack *itemStack);
+	void drawItemStack(uint8_t x, uint8_t y, ItemStack *itemStack, bool selected);
+	uint8_t cursor = 0;
 
 public:
 	virtual void handleInput();

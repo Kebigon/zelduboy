@@ -29,6 +29,7 @@ public:
 	ItemStack(ItemType = ItemType::NONE, uint8_t = 1);
 
 	ItemType getType() const;
+	uint8_t getAmount() const;
 };
 
 #endif

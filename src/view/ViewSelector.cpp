@@ -11,7 +11,8 @@ void ViewSelector::handleInput()
 {
 	arduboy.pollButtons();
 
-	if (arduboy.justPressed(LEFT_BUTTON) && arduboy.justPressed(RIGHT_BUTTON))
+	if ((arduboy.justPressed(LEFT_BUTTON) && arduboy.pressed(RIGHT_BUTTON))
+			|| (arduboy.pressed(LEFT_BUTTON) && arduboy.justPressed(RIGHT_BUTTON)))
 	{
 		currentView = currentView == mapView ? (View*)inventoryView : (View*)mapView;
 		return;
@@ -38,8 +39,8 @@ void ViewSelector::drawMenu()
 
 	Inventory *inventory = game->getPlayer()->getInventory();
 
-	drawMenuItem(0, 1, 'A', inventory->getItem(ITEM_A));
-	drawMenuItem(0, 18, 'B', inventory->getItem(ITEM_B));
+	drawMenuItem(0, 1, 'A', inventory->getItemA());
+	drawMenuItem(0, 18, 'B', inventory->getItemB());
 }
 
 void ViewSelector::drawMenuItem(uint8_t x, uint8_t y, char button, ItemStack * item)
