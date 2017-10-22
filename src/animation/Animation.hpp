@@ -11,6 +11,7 @@ class Animation
 
 public:
 	Animation(uint8_t endCounter);
+	uint8_t getAnimationCountdown() const;
 	bool isFinish() const;
 	virtual void onAnimationEnd() = 0;
 	virtual void display(Player *player, uint8_t displayPlayerX, uint8_t displayPlayerY) = 0;
