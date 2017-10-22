@@ -43,3 +43,12 @@ PlayerVerticalPosition Player::getVerticalPosition() const
 	else
 		return PlayerVerticalPosition::CENTER;
 }
+
+Animation * Player::getCurrentAnimation() const
+{
+	return currentAnimation;
+}
+
+void Player::setCurrentAnimation(Animation *animation) {
+	currentAnimation = animation;
+}

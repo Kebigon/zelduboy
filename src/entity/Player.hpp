@@ -3,6 +3,7 @@
 
 #include "inventory/Inventory.hpp"
 #include "Location.hpp"
+#include "../animation/Animation.hpp"
 
 enum class Direction
 {
@@ -30,6 +31,7 @@ class Player
 {
 	Inventory * inventory = new Inventory();
 	Location * location;
+	Animation *currentAnimation = nullptr;
 
 public:
 	Player(Location *);
@@ -40,6 +42,8 @@ public:
 	Direction direction;
 	PlayerHorizontalPosition getHorizontalPosition() const;
 	PlayerVerticalPosition getVerticalPosition() const;
+	Animation * getCurrentAnimation() const;
+	void setCurrentAnimation(Animation *animation);
 };
 
 #endif
