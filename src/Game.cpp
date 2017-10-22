@@ -13,3 +13,18 @@ Player * Game::getPlayer() const
 {
 	return player;
 }
+
+void Game::lockMapInput()
+{
+	mapInputLocked = true;
+}
+
+void Game::unlockMapInput()
+{
+	mapInputLocked = false;
+}
+
+bool Game::isMapInputLocked() const
+{
+	return mapInputLocked;
+}

@@ -6,10 +6,14 @@
 class Game
 {
 	Player * player;
+	bool mapInputLocked = false;
 
 public:
 	Game();
 	Player * getPlayer() const;
+	void lockMapInput();
+	void unlockMapInput();
+	bool isMapInputLocked() const;
 };
 
 #endif

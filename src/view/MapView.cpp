@@ -10,6 +10,9 @@ MapView::MapView(Game *game)
 
 void MapView::handleInput()
 {
+	if (game->isMapInputLocked())
+		return;
+
 	Player *player = game->getPlayer();
 	int8_t moveX = 0, moveY = 0;
 
