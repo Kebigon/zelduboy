@@ -49,6 +49,7 @@ Animation * Player::getCurrentAnimation() const
 	return currentAnimation;
 }
 
-void Player::setCurrentAnimation(Animation *animation) {
+void Player::setCurrentAnimation(Animation *animation)
+{
 	currentAnimation = animation;
 }
