@@ -165,6 +165,13 @@ void MapView::drawPlayer(Player *player)
 			break;
 	}
 
+	Animation *playerAnimation = player->getCurrentAnimation();
+	if (playerAnimation != nullptr)
+	{
+		playerAnimation->display(player, displayPlayerX, displayPlayerY);
+		return;
+	}
+
 	uint8_t frame = static_cast<int>(player->direction) << 1;
 
 	if (player->isMoving)
