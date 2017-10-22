@@ -20,7 +20,7 @@ void setup()
 	arduboy.setFrameRate(30);
 
 	game = new Game();
-	viewSelector = new ViewSelector(game);
+	viewSelector = new ViewSelector();
 }
 
 void loop()

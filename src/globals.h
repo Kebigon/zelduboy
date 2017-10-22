@@ -2,6 +2,7 @@
 #define GLOBALS_H
 
 #include <Arduboy2.h>
+#include "Game.hpp"
 
 #define TILE_SIZE 16
 
@@ -28,6 +29,7 @@
 #define PLAYER_CENTER_POS_BOTTOM 40 // MAP_CANVAS_HALF_HEIGHT + PLAYER_HALF_HEIGHT
 
 extern Arduboy2 arduboy;
+extern Game *game;
 
 extern uint8_t frameCounter;
 

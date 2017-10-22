@@ -6,11 +6,8 @@
 class View
 {
 public:
-	View(Game *game);
 	virtual void handleInput() = 0;
 	virtual void draw() = 0;
-protected:
-	Game *game;
 };
 
 #endif

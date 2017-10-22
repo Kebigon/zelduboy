@@ -12,7 +12,6 @@ class InventoryView : public View
 	void drawItemStack(uint8_t x, uint8_t y, ItemStack *itemStack);
 
 public:
-	InventoryView(Game *game);
 	virtual void handleInput();
 	virtual void draw();
 };

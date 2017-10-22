@@ -3,11 +3,8 @@
 #include "globals.h"
 #include "../data/bitmaps.h"
 
-ViewSelector::ViewSelector(Game *game)
-	: View(game)
-	, inventoryView(new InventoryView(game))
-	, mapView(new MapView(game))
-	, currentView(mapView)
+ViewSelector::ViewSelector()
+	: currentView(mapView)
 {}
 
 void ViewSelector::handleInput()

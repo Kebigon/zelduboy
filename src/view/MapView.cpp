@@ -4,9 +4,6 @@
 #include "../data/chunksdata.h"
 #include "../data/bitmaps.h"
 
-MapView::MapView(Game *game)
-	: View(game)
-{}
 
 void MapView::handleInput()
 {

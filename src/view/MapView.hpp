@@ -9,7 +9,6 @@ class MapView: public View
 	void drawPlayer(Player *player);
 
 public:
-	MapView(Game *game);
 	virtual void handleInput();
 	virtual void draw();
 };

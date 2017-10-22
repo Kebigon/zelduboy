@@ -4,10 +4,6 @@
 #include "../data/bitmaps.h"
 #include "globals.h"
 
-InventoryView::InventoryView(Game *game)
-	: View(game)
-{}
-
 void InventoryView::handleInput()
 {
 	// TODO
