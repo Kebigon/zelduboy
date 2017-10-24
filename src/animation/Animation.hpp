@@ -10,7 +10,7 @@ class Animation
 	uint8_t endFrame;
 
 public:
-	Animation(uint8_t endCounter);
+	Animation(uint8_t duration);
 	uint8_t getAnimationCountdown() const;
 	bool isFinish() const;
 	virtual void onAnimationEnd() = 0;

@@ -1,8 +1,8 @@
 #include "Animation.hpp"
 #include "../globals.h"
 
-Animation::Animation(uint8_t endFrame)
-	: endFrame(endFrame)
+Animation::Animation(uint8_t duration)
+	: endFrame(frameCounter + duration)
 {}
 
 uint8_t Animation::getAnimationCountdown() const

@@ -3,8 +3,8 @@
 #include "../../globals.h"
 #include "../../data/bitmaps.h"
 
-PlayerSwingsSwordAnimation::PlayerSwingsSwordAnimation(uint8_t endCounter)
-	: Animation(endCounter)
+PlayerSwingsSwordAnimation::PlayerSwingsSwordAnimation()
+	: Animation(PLAYER_SWINGS_SWORD_DURATION)
 {}
 
 void PlayerSwingsSwordAnimation::onAnimationEnd()
