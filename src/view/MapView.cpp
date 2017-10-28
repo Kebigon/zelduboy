@@ -7,6 +7,13 @@
 
 void MapView::handleInput()
 {
+	Animation *animation = game->getPlayer()->getCurrentAnimation();
+	if (animation != nullptr && animation->isFinish())
+	{
+		animation->onAnimationEnd();
+		game->getPlayer()->setCurrentAnimation(nullptr);
+	}
+
 	if (game->isMapInputLocked())
 		return;
 
@@ -66,6 +73,11 @@ void MapView::handleInput()
 	{
 		player->isMoving = false;
 	}
+
+	if (arduboy.justPressed(A_BUTTON))
+		player->useItem(player->getInventory()->getItemA());
+	if (arduboy.justPressed(B_BUTTON))
+		player->useItem(player->getInventory()->getItemA());
 }
 
 void MapView::draw()
@@ -168,7 +180,7 @@ void MapView::drawPlayer(Player *player)
 	Animation *playerAnimation = player->getCurrentAnimation();
 	if (playerAnimation != nullptr)
 	{
-		playerAnimation->display(player, displayPlayerX, displayPlayerY);
+		playerAnimation->display(player, MAP_CANVAS_X + displayPlayerX, MAP_CANVAS_Y + displayPlayerY);
 		return;
 	}
 

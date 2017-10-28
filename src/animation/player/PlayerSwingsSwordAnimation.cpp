@@ -19,10 +19,10 @@ void PlayerSwingsSwordAnimation::display(Player *player, uint8_t displayPlayerX,
 	switch (player->direction)
 	{
 		case Direction::LEFT:
-			frame = getAnimationCountdown() == 1 ? 3 : 2;
+			frame = (getAnimationCountdown() >> 3) == 1 ? 3 : 2;
 			break;
 		case Direction::RIGHT:
-			frame = getAnimationCountdown() == 1 ? 1 : 0;
+			frame = (getAnimationCountdown() >> 3) == 1 ? 1 : 0;
 			break;
 		default:
 			return;

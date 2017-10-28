@@ -3,6 +3,7 @@
 #include <Arduboy2.h>
 #include <Sprites.h>
 #include "globals.h"
+#include "../animation/player/PlayerSwingsSwordAnimation.hpp"
 
 Player::Player(Location * location)
 	: location(location)
@@ -52,4 +53,14 @@ Animation * Player::getCurrentAnimation() const
 void Player::setCurrentAnimation(Animation *animation)
 {
 	currentAnimation = animation;
+}
+
+void Player::useItem(ItemStack *item)
+{
+	switch (item->getType())
+	{
+		case ItemType::SWORD:
+			currentAnimation = new PlayerSwingsSwordAnimation();
+			break;
+	}
 }

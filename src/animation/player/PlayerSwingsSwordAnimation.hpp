@@ -3,7 +3,7 @@
 
 #include "../Animation.hpp"
 
-#define PLAYER_SWINGS_SWORD_DURATION 2
+#define PLAYER_SWINGS_SWORD_DURATION 16
 
 class PlayerSwingsSwordAnimation : public Animation
 {

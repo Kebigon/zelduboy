@@ -44,6 +44,7 @@ public:
 	PlayerVerticalPosition getVerticalPosition() const;
 	Animation * getCurrentAnimation() const;
 	void setCurrentAnimation(Animation *animation);
+	void useItem(ItemStack *item);
 };
 
 #endif
