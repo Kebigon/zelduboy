@@ -1,4 +1,8 @@
+# PlatformIO
 .pioenvs
 .piolibdeps
 .clang_complete
 .gcc-flags.json
+
+# Compiled Object files
+*.o
