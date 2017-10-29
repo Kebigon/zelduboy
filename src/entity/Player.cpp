@@ -59,3 +59,37 @@ void Player::useItem(ItemStack *item)
 			break;
 	}
 }
+
+void Player::setVelocity(int8_t velocityX, int8_t velocityY)
+{
+	this->velocityX = velocityX;
+	this->velocityY = velocityY;
+}
+
+int8_t Player::getVelocityX() const
+{
+	return velocityX;
+}
+
+int8_t Player::getVelocityY() const
+{
+	return velocityY;
+}
+
+void Player::update()
+{
+	// TODO: remove from here
+	Animation *animation = getCurrentAnimation();
+	if (animation != nullptr && animation->isFinish())
+	{
+		animation->onAnimationEnd();
+		setCurrentAnimation(nullptr);
+	}
+
+	// TODO: remove from here
+	if (game->isMapInputLocked())
+		return;
+
+	inputComponent->update(this);
+	physicsComponent->update(this);
+}

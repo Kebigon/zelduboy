@@ -7,77 +7,7 @@
 
 void MapView::handleInput()
 {
-	Animation *animation = game->getPlayer()->getCurrentAnimation();
-	if (animation != nullptr && animation->isFinish())
-	{
-		animation->onAnimationEnd();
-		game->getPlayer()->setCurrentAnimation(nullptr);
-	}
-
-	if (game->isMapInputLocked())
-		return;
-
-	Player *player = game->getPlayer();
-	int8_t moveX = 0, moveY = 0;
-
-	if (arduboy.pressed(LEFT_BUTTON))
-	{
-		player->direction = Direction::LEFT;
-		moveX = -1;
-	}
-	else if (arduboy.pressed(RIGHT_BUTTON))
-	{
-		player->direction = Direction::RIGHT;
-		moveX = 1;
-	}
-
-	if (arduboy.pressed(UP_BUTTON))
-	{
-		player->direction = Direction::UP;
-		moveY = -1;
-	}
-	else if (arduboy.pressed(DOWN_BUTTON))
-	{
-		player->direction = Direction::DOWN;
-		moveY = 1;
-	}
-
-	if (moveX != 0 || moveY != 0)
-	{
-		player->isMoving = true;
-
-		Location *location = player->getLocation();
-		bool checkPassableX = location->getX() % TILE_SIZE == 0;
-		bool checkPassableY = location->getY() % TILE_SIZE == 0;
-
-		if (checkPassableX || checkPassableY)
-		{
-			uint8_t newTileX = (location->getX() + moveX) >> 4;
-			uint8_t newTileY = (location->getY() + moveY) >> 4;
-			if (moveX == 1) newTileX += 1;
-			if (moveY == 1) newTileY += 1;
-
-			if (location->getMap()->isPassable(newTileX, newTileY))
-			{
-				if (moveX != 0) location->updateX(moveX);
-				if (moveY != 0) location->updateY(moveY);
-			}
-		}
-		else
-		{
-			if (moveX != 0) location->updateX(moveX);
-			if (moveY != 0) location->updateY(moveY);
-		}
-	}
-	else
-	{
-		player->isMoving = false;
-	}
-
-	if (arduboy.justPressed(A_BUTTON))
-		player->useItem(player->getInventory()->getItemA());
-	if (arduboy.justPressed(B_BUTTON))
-		player->useItem(player->getInventory()->getItemA());
+	game->getPlayer()->update();
 }
 
 void MapView::draw()
