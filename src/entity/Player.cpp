@@ -93,3 +93,8 @@ void Player::update()
 	inputComponent->update(this);
 	physicsComponent->update(this);
 }
+
+void Player::draw()
+{
+	graphicsComponent->draw(this);
+}

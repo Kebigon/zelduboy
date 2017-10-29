@@ -5,6 +5,7 @@
 #include "Entity.hpp"
 #include "../animation/Animation.hpp"
 
+#include "../component/GraphicsComponent.hpp"
 #include "../component/InputComponent.hpp"
 #include "../component/PhysicsComponent.hpp"
 
@@ -32,6 +33,7 @@ enum class PlayerVerticalPosition
 
 class Player : public Entity
 {
+	GraphicsComponent *graphicsComponent = new GraphicsComponent();
 	InputComponent *inputComponent = new InputComponent();
 	PhysicsComponent *physicsComponent = new PhysicsComponent();
 
@@ -42,7 +44,6 @@ class Player : public Entity
 public:
 	Player(Location *);
 	Inventory * getInventory() const;
-	void draw();
 	bool isMoving;
 	Direction direction;
 	PlayerHorizontalPosition getHorizontalPosition() const;
@@ -56,6 +57,7 @@ public:
 	void setVelocity(int8_t velocityX, int8_t velocityY);
 	void setDirection(Direction direction);
 	void update();
+	void draw();
 };
 
 #endif
