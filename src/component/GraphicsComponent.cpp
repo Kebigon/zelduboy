@@ -27,3 +27,29 @@ PlayerVerticalPosition GraphicsComponent::getPlayerVerticalPosition() const
 	else
 		return PlayerVerticalPosition::CENTER;
 }
+
+uint16_t GraphicsComponent::getDisplayStartX() const
+{
+	switch (getPlayerHorizontalPosition())
+	{
+		case PlayerHorizontalPosition::LEFT:
+			return 0;
+		case PlayerHorizontalPosition::CENTER:
+			return game->getPlayer()->getLocation()->getX() - PLAYER_CENTER_POS_LEFT;
+		case PlayerHorizontalPosition::RIGHT:
+			return game->getPlayer()->getLocation()->getMap()->getWidth() - MAP_CANVAS_WIDTH;
+	}
+}
+
+uint16_t GraphicsComponent::getDisplayStartY() const
+{
+	switch (getPlayerVerticalPosition())
+	{
+		case PlayerVerticalPosition::TOP:
+			return 0;
+		case PlayerVerticalPosition::CENTER:
+			return game->getPlayer()->getLocation()->getY() - PLAYER_CENTER_POS_TOP;
+		case PlayerVerticalPosition::BOTTOM:
+			return game->getPlayer()->getLocation()->getMap()->getHeight() - MAP_CANVAS_HEIGHT;
+	}
+}
