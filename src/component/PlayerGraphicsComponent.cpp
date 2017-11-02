@@ -1,4 +1,4 @@
-#include "GraphicsComponent.hpp"
+#include "PlayerGraphicsComponent.hpp"
 
 #include <Arduboy2.h>
 
@@ -7,7 +7,7 @@
 #include "../globals.h"
 #include "../data/bitmaps.h"
 
-void GraphicsComponent::draw(Player *player)
+void PlayerGraphicsComponent::draw(Player *player)
 {
 	Location *location = player->getLocation();
 

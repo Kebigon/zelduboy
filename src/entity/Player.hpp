@@ -5,7 +5,7 @@
 #include "Entity.hpp"
 #include "../animation/Animation.hpp"
 
-#include "../component/GraphicsComponent.hpp"
+#include "../component/PlayerGraphicsComponent.hpp"
 #include "../component/InputComponent.hpp"
 #include "../component/PhysicsComponent.hpp"
 
@@ -33,7 +33,7 @@ enum class PlayerVerticalPosition
 
 class Player : public Entity
 {
-	GraphicsComponent *graphicsComponent = new GraphicsComponent();
+	PlayerGraphicsComponent *graphicsComponent = new PlayerGraphicsComponent();
 	InputComponent *inputComponent = new InputComponent();
 	PhysicsComponent *physicsComponent = new PhysicsComponent();
 

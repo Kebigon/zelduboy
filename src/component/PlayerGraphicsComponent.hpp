@@ -3,7 +3,7 @@
 
 class Player;
 
-class GraphicsComponent
+class PlayerGraphicsComponent
 {
 public:
 	void draw(Player *player);
