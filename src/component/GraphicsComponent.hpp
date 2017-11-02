@@ -20,10 +20,10 @@ enum class PlayerVerticalPosition
 class GraphicsComponent
 {
 protected:
-	PlayerHorizontalPosition getPlayerHorizontalPosition() const;
-	PlayerVerticalPosition getPlayerVerticalPosition() const;
-	uint16_t getDisplayStartX() const;
-	uint16_t getDisplayStartY() const;
+	static PlayerHorizontalPosition getPlayerHorizontalPosition();
+	static PlayerVerticalPosition getPlayerVerticalPosition();
+	static uint16_t getDisplayStartX();
+	static uint16_t getDisplayStartY();
 };
 
 #endif
