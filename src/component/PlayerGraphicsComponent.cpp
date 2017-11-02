@@ -13,35 +13,9 @@ void PlayerGraphicsComponent::draw(Player *player)
 
 	uint16_t playerX = location->getX();
 	uint16_t playerY = location->getY();
-	Map *map = location->getMap();
 
-	uint8_t displayPlayerX, displayPlayerY;
-
-	switch (getPlayerHorizontalPosition())
-	{
-		case PlayerHorizontalPosition::LEFT:
-			displayPlayerX = playerX;
-			break;
-		case PlayerHorizontalPosition::CENTER:
-			displayPlayerX = PLAYER_CENTER_POS_LEFT;
-			break;
-		case PlayerHorizontalPosition::RIGHT:
-			displayPlayerX = playerX - (map->getWidth() - MAP_CANVAS_WIDTH);
-			break;
-	}
-
-	switch (getPlayerVerticalPosition())
-	{
-		case PlayerVerticalPosition::TOP:
-			displayPlayerY = playerY;
-			break;
-		case PlayerVerticalPosition::CENTER:
-			displayPlayerY = PLAYER_CENTER_POS_TOP;
-			break;
-		case PlayerVerticalPosition::BOTTOM:
-			displayPlayerY = playerY - (map->getHeight() - MAP_CANVAS_HEIGHT);
-			break;
-	}
+	uint8_t displayPlayerX = playerX - getDisplayStartX();
+	uint8_t displayPlayerY = playerY - getDisplayStartY();
 
 	Animation *playerAnimation = player->getCurrentAnimation();
 	if (playerAnimation != nullptr)
