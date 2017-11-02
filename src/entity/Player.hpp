@@ -17,20 +17,6 @@ enum class Direction
 	RIGHT
 };
 
-enum class PlayerHorizontalPosition
-{
-	LEFT,
-	CENTER,
-	RIGHT
-};
-
-enum class PlayerVerticalPosition
-{
-	TOP,
-	CENTER,
-	BOTTOM
-};
-
 class Player : public Entity
 {
 	PlayerGraphicsComponent *graphicsComponent = new PlayerGraphicsComponent();
@@ -46,8 +32,6 @@ public:
 	Inventory * getInventory() const;
 	bool isMoving;
 	Direction direction;
-	PlayerHorizontalPosition getHorizontalPosition() const;
-	PlayerVerticalPosition getVerticalPosition() const;
 	Animation * getCurrentAnimation() const;
 	void setCurrentAnimation(Animation *animation);
 	void useItem(ItemStack *item);

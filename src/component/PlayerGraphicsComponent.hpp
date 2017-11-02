@@ -1,9 +1,11 @@
-#ifndef GRAPHICS_COMPONENT_HPP
-#define GRAPHICS_COMPONENT_HPP
+#ifndef PLAYER_GRAPHICS_COMPONENT_HPP
+#define PLAYER_GRAPHICS_COMPONENT_HPP
+
+#include "GraphicsComponent.hpp"
 
 class Player;
 
-class PlayerGraphicsComponent
+class PlayerGraphicsComponent : public GraphicsComponent
 {
 public:
 	void draw(Player *player);

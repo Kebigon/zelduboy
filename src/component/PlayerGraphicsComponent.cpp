@@ -17,7 +17,7 @@ void PlayerGraphicsComponent::draw(Player *player)
 
 	uint8_t displayPlayerX, displayPlayerY;
 
-	switch (player->getHorizontalPosition())
+	switch (getPlayerHorizontalPosition())
 	{
 		case PlayerHorizontalPosition::LEFT:
 			displayPlayerX = playerX;
@@ -30,7 +30,7 @@ void PlayerGraphicsComponent::draw(Player *player)
 			break;
 	}
 
-	switch (player->getVerticalPosition())
+	switch (getPlayerVerticalPosition())
 	{
 		case PlayerVerticalPosition::TOP:
 			displayPlayerY = playerY;
