@@ -1,8 +1,8 @@
-#include "PhysicsComponent.hpp"
+#include "PlayerPhysicsComponent.hpp"
 
 #include "globals.h"
 
-void PhysicsComponent::update(Player *player)
+void PlayerPhysicsComponent::update(Player *player)
 {
 	int8_t velocityX = player->getVelocityX();
 	int8_t velocityY = player->getVelocityY();

@@ -7,7 +7,7 @@
 
 #include "../component/graphics/PlayerGraphicsComponent.hpp"
 #include "../component/input/InputComponent.hpp"
-#include "../component/physics/PhysicsComponent.hpp"
+#include "../component/physics/PlayerPhysicsComponent.hpp"
 
 enum class Direction
 {
@@ -21,7 +21,7 @@ class Player : public Entity
 {
 	PlayerGraphicsComponent *graphicsComponent = new PlayerGraphicsComponent();
 	InputComponent *inputComponent = new InputComponent();
-	PhysicsComponent *physicsComponent = new PhysicsComponent();
+	PlayerPhysicsComponent *physicsComponent = new PlayerPhysicsComponent();
 
 	Inventory * inventory = new Inventory();
 	Animation *currentAnimation = nullptr;

@@ -3,7 +3,7 @@
 
 class Player;
 
-class PhysicsComponent
+class PlayerPhysicsComponent
 {
 public:
 	void update(Player *player);
