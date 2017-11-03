@@ -2,7 +2,7 @@
 #define MAP_VIEW_HPP
 
 #include "View.hpp"
-#include "../component/TilesGraphicsComponent.hpp"
+#include "../component/graphics/TilesGraphicsComponent.hpp"
 
 class MapView: public View
 {

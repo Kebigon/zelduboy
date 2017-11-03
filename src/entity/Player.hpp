@@ -5,9 +5,9 @@
 #include "Entity.hpp"
 #include "../animation/Animation.hpp"
 
-#include "../component/PlayerGraphicsComponent.hpp"
-#include "../component/InputComponent.hpp"
-#include "../component/PhysicsComponent.hpp"
+#include "../component/graphics/PlayerGraphicsComponent.hpp"
+#include "../component/input/InputComponent.hpp"
+#include "../component/physics/PhysicsComponent.hpp"
 
 enum class Direction
 {

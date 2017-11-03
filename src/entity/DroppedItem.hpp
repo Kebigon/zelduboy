@@ -3,7 +3,7 @@
 
 #include "Entity.hpp"
 #include "../inventory/ItemStack.hpp"
-#include "../component/DroppedItemGraphicsComponent.hpp"
+#include "../component/graphics/DroppedItemGraphicsComponent.hpp"
 
 class DroppedItem : public Entity
 {

@@ -1,7 +1,7 @@
 #include "TilesGraphicsComponent.hpp"
 
-#include "../globals.h"
-#include "../data/bitmaps.h"
+#include "globals.h"
+#include "data/bitmaps.h"
 
 void TilesGraphicsComponent::draw()
 {

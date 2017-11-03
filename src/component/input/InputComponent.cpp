@@ -1,6 +1,6 @@
 #include "InputComponent.hpp"
 
-#include "../globals.h"
+#include "globals.h"
 
 void InputComponent::update(Player *player)
 {

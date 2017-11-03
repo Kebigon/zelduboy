@@ -2,10 +2,10 @@
 
 #include <Arduboy2.h>
 
-#include "../Location.hpp"
-#include "../entity/Player.hpp"
-#include "../globals.h"
-#include "../data/bitmaps.h"
+#include "Location.hpp"
+#include "entity/Player.hpp"
+#include "globals.h"
+#include "data/bitmaps.h"
 
 void PlayerGraphicsComponent::draw(Player *player)
 {

@@ -2,7 +2,7 @@
 #define DROPPED_ITEM_GRAPHICS_COMPONENT_HPP
 
 #include "GraphicsComponent.hpp"
-#include "../data/bitmaps.h"
+#include "data/bitmaps.h"
 
 class DroppedItem;
 

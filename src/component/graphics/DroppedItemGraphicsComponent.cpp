@@ -1,8 +1,8 @@
 #include "DroppedItemGraphicsComponent.hpp"
 
-#include "../globals.h"
-#include "../data/bitmaps.h"
-#include "../entity/DroppedItem.hpp"
+#include "globals.h"
+#include "data/bitmaps.h"
+#include "entity/DroppedItem.hpp"
 
 void DroppedItemGraphicsComponent::draw(DroppedItem *item)
 {

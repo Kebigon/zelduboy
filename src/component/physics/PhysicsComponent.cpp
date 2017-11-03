@@ -1,6 +1,6 @@
 #include "PhysicsComponent.hpp"
 
-#include "../globals.h"
+#include "globals.h"
 
 void PhysicsComponent::update(Player *player)
 {
