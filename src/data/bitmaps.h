@@ -1,6 +1,8 @@
 #ifndef BITMAPS_H
 #define BITMAPS_H
 
+#include <Arduboy2.h>
+
 const unsigned char PROGMEM items_plus_mask[] =
 {
 // width, height,
