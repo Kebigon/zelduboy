@@ -2,7 +2,8 @@
 #define MAP_VIEW_HPP
 
 #include "View.hpp"
-#include "../component/graphics/TilesGraphicsComponent.hpp"
+#include "entity/Player.hpp"
+#include "component/graphics/TilesGraphicsComponent.hpp"
 
 class MapView: public View
 {

@@ -2,6 +2,7 @@
 #define INVENTORY_VIEW_HPP
 
 #include "View.hpp"
+#include "inventory/Inventory.hpp"
 
 #define INVENTORY_VIEW_X 16
 #define INVENTORY_VIEW_Y  0

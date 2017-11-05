@@ -2,8 +2,8 @@
 
 Inventory::Inventory()
 {
-	itemA = new ItemStack(ItemType::SWORD);
-	itemB = new ItemStack(ItemType::BOMB, 10);
+	itemA = new ItemStack();
+	itemB = new ItemStack();
 
 	for (int i = 0; i != INVENTORY_SIZE; i++)
 		items[i] = new ItemStack();

@@ -8,6 +8,10 @@
 void MapView::handleInput()
 {
 	game->getPlayer()->update();
+
+	std::vector<Entity *> entities = game->getEntities();
+	for (std::vector<Entity *>::iterator it = entities.begin(); entities.end(); ++it)
+		(*it)->update();
 }
 
 void MapView::draw()
@@ -16,4 +20,8 @@ void MapView::draw()
 
 	tilesGraphicsComponent->draw();
 	player->draw();
+
+	std::vector<Entity *> entities = game->getEntities();
+	for (std::vector<Entity *>::iterator it = entities.begin(); entities.end(); ++it)
+		(*it)->draw();
 }

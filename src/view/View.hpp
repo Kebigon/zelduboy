@@ -1,8 +1,6 @@
 #ifndef VIEW_HPP
 #define VIEW_HPP
 
-#include "../Game.hpp"
-
 class View
 {
 public:

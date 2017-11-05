@@ -1,14 +1,14 @@
 #include <Arduboy2.h>
 #include "Game.hpp"
-#include "view/ViewSelector.hpp"
 #include "data/chunksdata.h"
+#include "entity/DroppedItem.hpp"
+#include "Location.hpp"
 
 Map *mapHouse = new Map(mapHouseData);
 
 uint8_t frameCounter = 0;
 Arduboy2 arduboy;
 Game *game;
-ViewSelector *viewSelector;
 
 void setup()
 {
@@ -20,7 +20,9 @@ void setup()
 	arduboy.setFrameRate(30);
 
 	game = new Game();
-	viewSelector = new ViewSelector();
+
+	DroppedItem *item = new DroppedItem(new ItemStack(ItemType::SWORD), new Location(mapHouse, 48, 48));
+	game->addEntity(item);
 }
 
 void loop()
@@ -30,6 +32,5 @@ void loop()
 
 	frameCounter++;
 
-	viewSelector->handleInput();
-	viewSelector->draw();
+	game->update();
 }
