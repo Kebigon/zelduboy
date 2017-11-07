@@ -12,6 +12,7 @@ ItemType DroppedItem::getType() const
 
 void DroppedItem::update()
 {
+	physicsComponent->update(this);
 }
 
 void DroppedItem::draw()
