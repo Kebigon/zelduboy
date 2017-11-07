@@ -10,7 +10,7 @@ void MapView::handleInput()
 	game->getPlayer()->update();
 
 	std::vector<Entity *> entities = game->getEntities();
-	for (std::vector<Entity *>::iterator it = entities.begin(); entities.end(); ++it)
+	for (std::vector<Entity *>::iterator it = entities.begin(); it != entities.end(); ++it)
 		(*it)->update();
 }
 
@@ -22,6 +22,6 @@ void MapView::draw()
 	player->draw();
 
 	std::vector<Entity *> entities = game->getEntities();
-	for (std::vector<Entity *>::iterator it = entities.begin(); entities.end(); ++it)
+	for (std::vector<Entity *>::iterator it = entities.begin(); it != entities.end(); ++it)
 		(*it)->draw();
 }
