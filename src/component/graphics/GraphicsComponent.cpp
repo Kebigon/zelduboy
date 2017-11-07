@@ -2,7 +2,7 @@
 
 #include "globals.h"
 
-static PlayerHorizontalPosition GraphicsComponent::getPlayerHorizontalPosition()
+PlayerHorizontalPosition GraphicsComponent::getPlayerHorizontalPosition()
 {
 	Location *playerLocation = game->getPlayer()->getLocation();
 	uint16_t playerX = playerLocation->getX();
@@ -15,7 +15,7 @@ static PlayerHorizontalPosition GraphicsComponent::getPlayerHorizontalPosition()
 		return PlayerHorizontalPosition::CENTER;
 }
 
-static PlayerVerticalPosition GraphicsComponent::getPlayerVerticalPosition()
+PlayerVerticalPosition GraphicsComponent::getPlayerVerticalPosition()
 {
 	Location *playerLocation = game->getPlayer()->getLocation();
 	uint16_t playerY = playerLocation->getY();
@@ -28,7 +28,7 @@ static PlayerVerticalPosition GraphicsComponent::getPlayerVerticalPosition()
 		return PlayerVerticalPosition::CENTER;
 }
 
-static uint16_t GraphicsComponent::getDisplayStartX()
+uint16_t GraphicsComponent::getDisplayStartX()
 {
 	switch (getPlayerHorizontalPosition())
 	{
@@ -41,7 +41,7 @@ static uint16_t GraphicsComponent::getDisplayStartX()
 	}
 }
 
-static uint16_t GraphicsComponent::getDisplayStartY()
+uint16_t GraphicsComponent::getDisplayStartY()
 {
 	switch (getPlayerVerticalPosition())
 	{
