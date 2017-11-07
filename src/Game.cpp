@@ -4,6 +4,8 @@
 #include "data/chunksdata.h"
 
 Game::Game()
+	: entities()
+	, toRemove()
 {
 	// TODO: load game state from EEPROM
 	Location * location = new Location(mapHouse, 16, 16);
