@@ -10,6 +10,11 @@ ItemType DroppedItem::getType() const
 	return item->getType();
 }
 
+ItemStack * DroppedItem::getItemStack() const
+{
+	return item;
+}
+
 void DroppedItem::update()
 {
 	physicsComponent->update(this);

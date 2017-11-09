@@ -14,6 +14,7 @@ class DroppedItem : public Entity
 public:
 	DroppedItem(ItemStack *item, Location *location);
 	ItemType getType() const;
+	ItemStack * getItemStack() const;
 	void update();
 	void draw();
 };
