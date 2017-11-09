@@ -33,5 +33,5 @@ void InputComponent::update(Player *player)
 	if (arduboy.justPressed(A_BUTTON))
 		player->useItem(player->getInventory()->getItemA());
 	if (arduboy.justPressed(B_BUTTON))
-		player->useItem(player->getInventory()->getItemA());
+		player->useItem(player->getInventory()->getItemB());
 }
