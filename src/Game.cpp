@@ -1,6 +1,5 @@
 #include "Game.hpp"
 
-
 #include "data/chunksdata.h"
 
 Game::Game()
@@ -38,12 +37,12 @@ void Game::update()
 	// Remove entities that should be removed
 	if (!toRemove.empty() && !entities.empty())
 	{
-		for (std::vector<Entity *>::iterator it = toRemove.begin(); it != toRemove.end(); ++it)
+		for (std::vector<Entity *>::iterator it = toRemove.begin(); it != toRemove.end(); )
 		{
 			std::vector<Entity *>::iterator found = std::find(entities.begin(), entities.end(), *it);
 			if (found != entities.end())
 				entities.erase(found);
-			toRemove.erase(it);
+			it = toRemove.erase(it++);
 		}
 	}
 
