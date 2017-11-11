@@ -41,5 +41,5 @@ void PlayerGraphicsComponent::draw(Player *player)
 		}
 	}
 
-	Sprites::drawPlusMask(MAP_CANVAS_X + displayPlayerX, MAP_CANVAS_Y + displayPlayerY, link_plus_mask, frame);
+	Sprites::drawPlusMask(MAP_CANVAS_X + displayPlayerX, MAP_CANVAS_Y + displayPlayerY, player_plus_mask, frame);
 }

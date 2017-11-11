@@ -34,5 +34,5 @@ void PlayerSwingsSwordAnimation::display(Player *player, uint8_t displayPlayerX,
 			return;
 	}
 
-	Sprites::drawPlusMask(displayPlayerX, displayPlayerY, linkSword_plus_mask,  frame);
+	Sprites::drawPlusMask(displayPlayerX, displayPlayerY, playerSword_plus_mask,  frame);
 }

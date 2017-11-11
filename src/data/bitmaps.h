@@ -86,7 +86,7 @@ const unsigned char PROGMEM items_plus_mask[] =
 	0x00, 0x7f, 0x00, 0x7f, 0x00, 0x3f, 0x00, 0x1f,
 };
 
-const unsigned char PROGMEM link_plus_mask[] =
+const unsigned char PROGMEM player_plus_mask[] =
 {
 // width, height,
 	16, 16,
@@ -139,7 +139,7 @@ const unsigned char PROGMEM link_plus_mask[] =
 	0x5b, 0xff, 0x5b, 0xff, 0x42, 0xff, 0x43, 0xe7, 0x01, 0xc3, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,
 };
 
-const unsigned char PROGMEM linkSword_plus_mask[] =
+const unsigned char PROGMEM playerSword_plus_mask[] =
 {
 // width, height,
 	16, 16,
@@ -192,7 +192,7 @@ const unsigned char PROGMEM linkSword_plus_mask[] =
 	0x30, 0xff, 0x4b, 0xff, 0x5b, 0xff, 0x5a, 0xff, 0x03, 0xff, 0x19, 0xbf, 0x18, 0x3d, 0x00, 0x18,
 };
 
-const unsigned char PROGMEM sword_plus_mask[] =
+const unsigned char PROGMEM animationSword_plus_mask[] =
 {
 // width, height,
 	16, 16,

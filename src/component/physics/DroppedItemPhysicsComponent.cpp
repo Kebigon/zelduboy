@@ -9,7 +9,7 @@
 void DroppedItemPhysicsComponent::update(DroppedItem *item)
 {
 	Rect itemRect = { item->getLocation()->getX(), item->getLocation()->getY(), items_plus_mask[0], items_plus_mask[1] };
-	Rect playerRect = { game->getPlayer()->getLocation()->getX(), game->getPlayer()->getLocation()->getY(), link_plus_mask[0], link_plus_mask[1] };
+	Rect playerRect = { game->getPlayer()->getLocation()->getX(), game->getPlayer()->getLocation()->getY(), player_plus_mask[0], player_plus_mask[1] };
 
 	if (arduboy.collide(itemRect, playerRect))
 	{
