@@ -14,9 +14,24 @@ bool Inventory::addItem(ItemStack * newItem)
 	if (newItem->getType() == ItemType::NONE)
 		return true;
 
+	if (itemA->getType() == ItemType::NONE)
+	{
+		delete itemA;
+		itemA = newItem;
+		return true;
+	}
+
+	if (itemB->getType() == ItemType::NONE)
+	{
+		delete itemB;
+		itemB = newItem;
+		return true;
+	}
+
 	for (uint8_t i = 0; i != INVENTORY_SIZE; i++)
 		if (items[i]->getType() == ItemType::NONE)
 		{
+			delete items[i];
 			items[i] = newItem;
 			return true;
 		}
