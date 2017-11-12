@@ -5,7 +5,9 @@
 
 PlayerSwingsSwordAnimation::PlayerSwingsSwordAnimation()
 	: Animation(PLAYER_SWINGS_SWORD_DURATION)
-{}
+{
+	game->lockMapInput();
+}
 
 void PlayerSwingsSwordAnimation::onAnimationEnd()
 {

@@ -1,9 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include <ArduinoSTL.h>
-#include <vector>
-
+#include "utils/DArray.hpp"
 #include "entity/Player.hpp"
 #include "view/ViewSelector.hpp"
 
@@ -12,8 +10,10 @@ class Game
 	Player * player;
 	ViewSelector *viewSelector = new ViewSelector();
 	bool mapInputLocked = false;
-	std::vector<Entity *> entities;
-	std::vector<Entity *> toRemove;
+	// std::vector<Entity *> entities;
+	// std::vector<Entity *> toRemove;
+	DArray<Entity *> entities;
+	DArray<Entity *> toRemove;
 
 public:
 	Game();
@@ -23,7 +23,7 @@ public:
 	void unlockMapInput();
 	bool isMapInputLocked() const;
 	void addEntity(Entity *entity);
-	std::vector<Entity *> getEntities();
+	DArray<Entity *> getEntities();
 	void removeEntity(Entity *entity);
 };
 

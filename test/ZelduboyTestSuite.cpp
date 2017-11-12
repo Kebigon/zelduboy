@@ -3,11 +3,13 @@
 using namespace cgreen;
 
 TestSuite *location_tests();
+TestSuite *darray_tests();
 
 int main(int argc, char **argv)
 {
 	TestSuite *suite = create_test_suite();
 	add_suite(suite, location_tests());
+	add_suite(suite, darray_tests());
 	if (argc > 1)
 	{
 		return run_single_test(suite, argv[1], create_text_reporter());

@@ -3,8 +3,8 @@
 #include "data/chunksdata.h"
 
 Game::Game()
-	: entities()
-	, toRemove()
+	: entities(20)
+	, toRemove(10)
 {
 	// TODO: load game state from EEPROM
 	Location * location = new Location(mapHouse, 16, 16);
@@ -35,15 +35,13 @@ bool Game::isMapInputLocked() const
 void Game::update()
 {
 	// Remove entities that should be removed
-	if (!toRemove.empty() && !entities.empty())
+	if (!toRemove.isEmpty() && !entities.isEmpty())
 	{
-		for (std::vector<Entity *>::iterator it = toRemove.begin(); it != toRemove.end(); )
+		for (uint8_t i = 0; i != toRemove.getSize(); i++)
 		{
-			std::vector<Entity *>::iterator found = std::find(entities.begin(), entities.end(), *it);
-			if (found != entities.end())
-				entities.erase(found);
-			it = toRemove.erase(it++);
+			entities.remove(toRemove.get(i));
 		}
+		toRemove.clear();
 	}
 
 	viewSelector->handleInput();
@@ -52,15 +50,15 @@ void Game::update()
 
 void Game::addEntity(Entity *entity)
 {
-	entities.push_back(entity);
+	entities.add(entity);
 }
 
-std::vector<Entity *> Game::getEntities()
+DArray<Entity *> Game::getEntities()
 {
 	return entities;
 }
 
 void Game::removeEntity(Entity *entity)
 {
-	toRemove.push_back(entity);
+	toRemove.add(entity);
 }
