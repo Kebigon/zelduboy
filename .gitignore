@@ -6,3 +6,6 @@
 
 # Compiled Object files
 *.o
+
+# Unit tests
+test/all_tests
