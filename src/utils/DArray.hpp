@@ -13,7 +13,7 @@ class DArray
 
 public:
 	DArray(uint8_t maxSize);
-  	~DArray();
+	~DArray();
 
 	T get(uint8_t index) const;
 	uint8_t getSize() const;
@@ -22,7 +22,7 @@ public:
 
 	bool add(T element);
 	bool remove(T element);
-	bool remove(uint8_t index);
+	bool removeAt(uint8_t index);
 	void clear();
 };
 
@@ -38,7 +38,7 @@ DArray<T>::DArray(uint8_t maxSize)
 template <class T>
 DArray<T>::~DArray()
 {
-  free(array);
+	free(array);
 }
 
 
@@ -81,17 +81,17 @@ bool DArray<T>::add(T element)
 
 	array[size] = element;
 	size++;
-  return true;
+	return true;
 }
 
 template <class T>
 bool DArray<T>::remove(T element)
 {
-	return remove(find(element));
+	return removeAt(find(element));
 }
 
 template <class T>
-bool DArray<T>::remove(uint8_t index)
+bool DArray<T>::removeAt(uint8_t index)
 {
 	if (isEmpty() || index >= size)
 		return false;
@@ -100,6 +100,7 @@ bool DArray<T>::remove(uint8_t index)
 		array[i] = array[i + 1];
 
 	size--;
+	return true;
 }
 
 template <class T>
