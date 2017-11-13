@@ -5,4 +5,5 @@ check_lines:
 
 format:
 	@astyle --options=astyle.cfg -R "src/*" | grep -v Unchanged
+	@astyle --options=astyle.cfg -R "test/*.cpp" | grep -v Unchanged
 
