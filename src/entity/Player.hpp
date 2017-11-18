@@ -40,8 +40,8 @@ public:
 	int8_t getVelocityY() const;
 	void setVelocity(int8_t velocityX, int8_t velocityY);
 	void setDirection(Direction direction);
-	void update();
-	void draw();
+	virtual void update();
+	virtual void draw();
 };
 
 #endif

@@ -15,8 +15,8 @@ public:
 	DroppedItem(ItemStack *item, Location *location);
 	ItemType getType() const;
 	ItemStack * getItemStack() const;
-	void update();
-	void draw();
+	virtual void update();
+	virtual void draw();
 };
 
 #endif

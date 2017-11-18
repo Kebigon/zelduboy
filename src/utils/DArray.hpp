@@ -79,8 +79,7 @@ bool DArray<T>::add(T element)
 	if (size == maxSize)
 		return false;
 
-	array[size] = element;
-	size++;
+	array[size++] = element;
 	return true;
 }
 

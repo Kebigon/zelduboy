@@ -10,8 +10,7 @@ class Game
 	Player * player;
 	ViewSelector *viewSelector = new ViewSelector();
 	bool mapInputLocked = false;
-	// std::vector<Entity *> entities;
-	// std::vector<Entity *> toRemove;
+
 	DArray<Entity *> entities;
 	DArray<Entity *> toRemove;
 
@@ -23,7 +22,7 @@ public:
 	void unlockMapInput();
 	bool isMapInputLocked() const;
 	void addEntity(Entity *entity);
-	DArray<Entity *> getEntities();
+	DArray<Entity *> * getEntities();
 	void removeEntity(Entity *entity);
 };
 

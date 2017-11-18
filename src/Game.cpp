@@ -53,9 +53,9 @@ void Game::addEntity(Entity *entity)
 	entities.add(entity);
 }
 
-DArray<Entity *> Game::getEntities()
+DArray<Entity *> * Game::getEntities()
 {
-	return entities;
+	return &entities;
 }
 
 void Game::removeEntity(Entity *entity)
