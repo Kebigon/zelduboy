@@ -40,13 +40,13 @@ void PlayerSwingsSwordAnimation::display(Player *player, uint8_t displayPlayerX,
 			switch (getAnimationCounter())
 			{
 				case 0:
-					drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_0, -16,  0, ANIM_SWORD_LEFT     );
+					drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_0, -16, 0, ANIM_SWORD_LEFT);
 					break;
 				case 1:
 					drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_1, -16, 16, ANIM_SWORD_DOWN_LEFT);
 					break;
 				case 2:
-					drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_1,   0, 16, ANIM_SWORD_DOWN     );
+					drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_1, 0, 16, ANIM_SWORD_DOWN);
 					break;
 			}
 			break;

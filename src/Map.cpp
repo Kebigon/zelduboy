@@ -38,7 +38,7 @@ uint8_t Map::getTile(uint8_t tileX, uint8_t tileY) const
 {
 	// The player cannot walk outside of the map
 	if (tileX >= width || tileY >= height)
-		return 0; // Default tile
+		return 0;  // Default tile
 
 	uint8_t tileAddress = getTileAddress(tileX, tileY);
 
@@ -53,7 +53,7 @@ bool Map::isPassable(uint8_t tileX, uint8_t tileY) const
 
 	uint16_t arrayAddr = tileY * width + tileX;
 	uint16_t byteAddr = arrayAddr >> 3; // arrayAddr / 8
-	uint8_t  bitAddr = 0x07 - (arrayAddr & 0x07);
+	uint8_t bitAddr = 0x07 - (arrayAddr & 0x07);
 
 	return (pgm_read_byte(mapPassable + byteAddr) >> bitAddr) & 0x01;
 }

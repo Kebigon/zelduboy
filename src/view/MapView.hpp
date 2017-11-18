@@ -5,7 +5,7 @@
 #include "entity/Player.hpp"
 #include "component/graphics/TilesGraphicsComponent.hpp"
 
-class MapView: public View
+class MapView : public View
 {
 	TilesGraphicsComponent *tilesGraphicsComponent = new TilesGraphicsComponent();
 	void drawMap(Player *player);
