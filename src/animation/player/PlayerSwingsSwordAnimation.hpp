@@ -3,8 +3,8 @@
 
 #include "../Animation.hpp"
 
-#define PLAYER_SWINGS_SWORD_NB_FRAMES 24
-#define PLAYER_SWINGS_SWORD_FRAMES_PER_ANIM 8
+#define PLAYER_SWINGS_SWORD_NB_FRAMES 6
+#define PLAYER_SWINGS_SWORD_FRAMES_PER_ANIM 2
 
 class PlayerSwingsSwordAnimation : public Animation
 {

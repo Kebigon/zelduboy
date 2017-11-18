@@ -23,12 +23,14 @@ void PlayerSwingsSwordAnimation::onAnimationEnd()
 #define PLAYER_SWORD_RIGHT_0 6
 #define PLAYER_SWORD_RIGHT_1 7
 
-#define ANIM_SWORD_DOWN_LEFT 0
-#define ANIM_SWORD_DOWN      1
-#define ANIM_SWORD_UP_LEFT   2
-#define ANIM_SWORD_LEFT      3
+#define ANIM_SWORD_DOWN_LEFT  0
+#define ANIM_SWORD_DOWN       1
+#define ANIM_SWORD_UP_LEFT    2
+#define ANIM_SWORD_LEFT       3
 #define ANIM_SWORD_UP_RIGHT   4
-#define ANIM_SWORD_UP      5
+#define ANIM_SWORD_UP         5
+#define ANIM_SWORD_DOWN_RIGHT 6
+#define ANIM_SWORD_RIGHT      7
 
 void PlayerSwingsSwordAnimation::display(Player *player, uint8_t displayPlayerX, uint8_t displayPlayerY)
 {
@@ -39,25 +41,34 @@ void PlayerSwingsSwordAnimation::display(Player *player, uint8_t displayPlayerX,
 		case Direction::DOWN:
 			switch (getAnimationCounter())
 			{
-				case 0:
-					drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_0, -16, 0, ANIM_SWORD_LEFT);
-					break;
-				case 1:
-					drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_1, -16, 16, ANIM_SWORD_DOWN_LEFT);
-					break;
-				case 2:
-					drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_1, 0, 16, ANIM_SWORD_DOWN);
-					break;
+				case 0: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_0, -16, 0, ANIM_SWORD_LEFT); return;
+				case 1: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_1, -16, 16, ANIM_SWORD_DOWN_LEFT); return;
+				case 2: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_DOWN_1, 0, 16, ANIM_SWORD_DOWN); return;
+			}
+			return;
+		case Direction::LEFT:
+			switch (getAnimationCounter())
+			{
+				case 0: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_LEFT_0, 0, -16, ANIM_SWORD_UP); return;
+				case 1: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_LEFT_1, -16, -16, ANIM_SWORD_UP_LEFT); return;
+				case 2: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_LEFT_1, -16, 0, ANIM_SWORD_LEFT); return;
+			}
+			return;
+		case Direction::UP:
+			switch (getAnimationCounter())
+			{
+				case 0: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_UP_0, 16, 0, ANIM_SWORD_RIGHT); return;
+				case 1: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_UP_1, 16, -16, ANIM_SWORD_UP_RIGHT); return;
+				case 2: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_UP_1, 0, -16, ANIM_SWORD_UP); return;
 			}
 			break;
-		case Direction::LEFT:
-			// frame = animCountdown == 1 ? 2 : 3;
-			break;
-		case Direction::UP:
-			// frame = animCountdown == 1 ? 4 : 5;
-			break;
 		case Direction::RIGHT:
-			// frame = animCountdown == 1 ? 6 : 7;
+			switch (getAnimationCounter())
+			{
+				case 0: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_RIGHT_0, 0, -16, ANIM_SWORD_UP); return;
+				case 1: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_RIGHT_1, 16, -16, ANIM_SWORD_UP_RIGHT); return;
+				case 2: drawPlayerAndSword(displayPlayerX, displayPlayerY, PLAYER_SWORD_RIGHT_1,  16, 0, ANIM_SWORD_RIGHT); return;
+			}
 			break;
 		default:
 			return;
