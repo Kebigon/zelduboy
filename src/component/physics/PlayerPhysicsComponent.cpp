@@ -12,23 +12,8 @@ void PlayerPhysicsComponent::update(Player *player)
 		player->isMoving = true;
 
 		Location *location = player->getLocation();
-		bool checkPassableX = location->getX() % TILE_SIZE == 0;
-		bool checkPassableY = location->getY() % TILE_SIZE == 0;
 
-		if (checkPassableX || checkPassableY)
-		{
-			uint8_t newTileX = (location->getX() + velocityX) >> 4;
-			uint8_t newTileY = (location->getY() + velocityY) >> 4;
-			if (velocityX == 1) newTileX += 1;
-			if (velocityY == 1) newTileY += 1;
-
-			if (location->getMap()->isPassable(newTileX, newTileY))
-			{
-				if (velocityX != 0) location->updateX(velocityX);
-				if (velocityY != 0) location->updateY(velocityY);
-			}
-		}
-		else
+		if (checkMapPassability(location, velocityX, velocityY))
 		{
 			if (velocityX != 0) location->updateX(velocityX);
 			if (velocityY != 0) location->updateY(velocityY);
@@ -38,4 +23,25 @@ void PlayerPhysicsComponent::update(Player *player)
 	{
 		player->isMoving = false;
 	}
+}
+
+bool PlayerPhysicsComponent::checkMapPassability(Location *location, int8_t velocityX, int8_t velocityY)
+{
+	bool checkPassableX = location->getX() % TILE_SIZE == 0;
+	bool checkPassableY = location->getY() % TILE_SIZE == 0;
+
+	// We stay on the same tile: nothing to check
+	if (!checkPassableX && !checkPassableY)
+		return true;
+
+// TODO: probably somethinh to clarify here
+	uint8_t newTileX = (location->getX() + velocityX) >> 4;
+	uint8_t newTileY = (location->getY() + velocityY) >> 4;
+	if (velocityX == 1) newTileX += 1;
+	if (velocityY == 1) newTileY += 1;
+
+	if (location->getMap()->isPassable(newTileX, newTileY))
+		return true;
+
+	return false;
 }
