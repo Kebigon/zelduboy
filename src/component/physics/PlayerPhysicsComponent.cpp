@@ -13,7 +13,7 @@ void PlayerPhysicsComponent::update(Player *player)
 
 		Location *location = player->getLocation();
 
-		if (checkMapPassability(location, velocityX, velocityY))
+		if (checkMapPassability(location, velocityX, velocityY) && checkEntityCollisions(player->getCollisionBox(), velocityX, velocityY))
 		{
 			if (velocityX != 0) location->updateX(velocityX);
 			if (velocityY != 0) location->updateY(velocityY);
@@ -34,7 +34,7 @@ bool PlayerPhysicsComponent::checkMapPassability(Location *location, int8_t velo
 	if (!checkPassableX && !checkPassableY)
 		return true;
 
-// TODO: probably somethinh to clarify here
+	// TODO: probably somethinh to clarify here
 	uint8_t newTileX = (location->getX() + velocityX) >> 4;
 	uint8_t newTileY = (location->getY() + velocityY) >> 4;
 	if (velocityX == 1) newTileX += 1;
@@ -44,4 +44,21 @@ bool PlayerPhysicsComponent::checkMapPassability(Location *location, int8_t velo
 		return true;
 
 	return false;
+}
+
+bool PlayerPhysicsComponent::checkEntityCollisions(Rect playerCollisionBox, int8_t velocityX, int8_t velocityY)
+{
+	playerCollisionBox.x +=velocityX;
+	playerCollisionBox.y +=velocityY;
+
+	DArray<Entity *> *entities = game->getEntities();
+	for (int i = 0; i != entities->getSize(); i++)
+	{
+		Entity *entity = entities->get(i);
+
+		if (entity != NULL && !entity->isPassable() && entity->collideWith(playerCollisionBox))
+			return false;
+	}
+
+	return true;
 }
