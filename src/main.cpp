@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "data/chunksdata.h"
 #include "entity/DroppedItem.hpp"
+#include "entity/MovableBlock.hpp"
 #include "Location.hpp"
 
 Map *mapHouse = new Map(mapHouseData);
@@ -23,6 +24,8 @@ void setup()
 
 	DroppedItem *item = new DroppedItem(new ItemStack(ItemType::SWORD), new Location(mapHouse, 48, 48));
 	game->addEntity(item);
+	MovableBlock *block = new MovableBlock(new Location(mapHouse, 64, 48));
+	game->addEntity(block);
 }
 
 void loop()
