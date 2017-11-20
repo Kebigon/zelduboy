@@ -10,6 +10,7 @@ class Entity
 public:
 	Entity(Location *location);
 	Location * getLocation() const;
+	virtual bool isPassable() const;
 	virtual void update() = 0;
 	virtual void draw() = 0;
 };

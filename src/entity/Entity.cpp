@@ -8,3 +8,8 @@ Location * Entity::getLocation() const
 {
 	return location;
 }
+
+bool Entity::isPassable() const
+{
+	return true;
+}

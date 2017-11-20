@@ -10,6 +10,7 @@ class MovableBlock : public Entity
 	static MovableBlockGraphicsComponent graphicsComponent;
 public:
 	MovableBlock(Location *location);
+	virtual bool isPassable() const;
 	virtual void update();
 	virtual void draw();
 };
