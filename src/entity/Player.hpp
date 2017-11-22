@@ -19,9 +19,9 @@ enum class Direction
 
 class Player : public Entity
 {
-	PlayerGraphicsComponent *graphicsComponent = new PlayerGraphicsComponent();
-	InputComponent *inputComponent = new InputComponent();
-	PlayerPhysicsComponent *physicsComponent = new PlayerPhysicsComponent();
+	static InputComponent inputComponent;
+	static PlayerPhysicsComponent physicsComponent;
+	static PlayerGraphicsComponent graphicsComponent;
 
 	Inventory * inventory = new Inventory();
 	Animation *currentAnimation = nullptr;

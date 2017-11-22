@@ -22,10 +22,10 @@ ItemStack * DroppedItem::getItemStack() const
 
 void DroppedItem::update()
 {
-	physicsComponent->update(this);
+	physicsComponent.update(this);
 }
 
 void DroppedItem::draw()
 {
-	graphicsComponent->draw(this);
+	graphicsComponent.draw(this);
 }

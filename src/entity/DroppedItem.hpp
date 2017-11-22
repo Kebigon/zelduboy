@@ -8,9 +8,11 @@
 
 class DroppedItem : public Entity
 {
-	DroppedItemGraphicsComponent *graphicsComponent = new DroppedItemGraphicsComponent();
-	DroppedItemPhysicsComponent * physicsComponent = new DroppedItemPhysicsComponent();
+	static DroppedItemPhysicsComponent physicsComponent;
+	static DroppedItemGraphicsComponent graphicsComponent;
+
 	ItemStack *item;
+
 public:
 	DroppedItem(ItemStack *item, Location *location);
 	ItemType getItemType() const;

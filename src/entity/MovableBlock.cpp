@@ -1,9 +1,5 @@
 #include "MovableBlock.hpp"
 
-#include <Sprites.h>
-#include "data/bitmaps.h"
-#include "globals.h"
-
 MovableBlock::MovableBlock(Location *location)
 	: Entity(location)
 {}
@@ -19,7 +15,9 @@ bool MovableBlock::isPassable() const
 }
 
 void MovableBlock::update()
-{}
+{
+	physicsComponent.update(this);
+}
 
 void MovableBlock::draw()
 {
@@ -28,9 +26,13 @@ void MovableBlock::draw()
 
 bool MovableBlock::push(int8_t velocityX, int8_t velocityY)
 {
+	if (!physicsComponent.canBePushed(this, velocityX, velocityY))
+		return false;
+
 	if (velocityX != 0)
 		getLocation()->updateX(velocityX);
 	if (velocityY != 0)
 		getLocation()->updateY(velocityY);
+
 	return true;
 }

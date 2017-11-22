@@ -38,6 +38,8 @@ void Player::useItem(ItemStack *item)
 		case ItemType::SWORD:
 			currentAnimation = new PlayerSwingsSwordAnimation();
 			break;
+		default:
+			break;
 	}
 }
 
@@ -71,11 +73,11 @@ void Player::update()
 	if (game->isMapInputLocked())
 		return;
 
-	inputComponent->update(this);
-	physicsComponent->update(this);
+	inputComponent.update(this);
+	physicsComponent.update(this);
 }
 
 void Player::draw()
 {
-	graphicsComponent->draw(this);
+	graphicsComponent.draw(this);
 }
