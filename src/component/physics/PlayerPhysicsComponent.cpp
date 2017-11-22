@@ -1,6 +1,7 @@
 #include "PlayerPhysicsComponent.hpp"
 
 #include "globals.h"
+#include "entity/MovableBlock.hpp"
 
 void PlayerPhysicsComponent::update(Player *player)
 {
@@ -34,7 +35,7 @@ bool PlayerPhysicsComponent::checkMapPassability(Location *location, int8_t velo
 	if (!checkPassableX && !checkPassableY)
 		return true;
 
-	// TODO: probably somethinh to clarify here
+	// TODO: probably something to clarify here
 	uint8_t newTileX = (location->getX() + velocityX) >> 4;
 	uint8_t newTileY = (location->getY() + velocityY) >> 4;
 	if (velocityX == 1) newTileX += 1;
@@ -57,7 +58,15 @@ bool PlayerPhysicsComponent::checkEntityCollisions(Rect playerCollisionBox, int8
 		Entity *entity = entities->get(i);
 
 		if (entity != NULL && !entity->isPassable() && entity->collideWith(playerCollisionBox))
-			return false;
+		{
+			switch (entity->getType())
+			{
+				case EntityType::MOVABLE_BLOCK:
+					return ((MovableBlock *)entity)->push(velocityX, velocityY);
+				default:
+					return false;
+			}
+		}
 	}
 
 	return true;

@@ -14,6 +14,8 @@ public:
 	virtual void update();
 	virtual void draw();
 	virtual EntityType getType() const;
+
+	bool push(int8_t velocityX, int8_t velocityY);
 };
 
 #endif
