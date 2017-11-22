@@ -4,7 +4,7 @@
 #include "../../data/bitmaps.h"
 
 PlayerSwingsSwordAnimation::PlayerSwingsSwordAnimation()
-	: Animation(PLAYER_SWINGS_SWORD_NB_FRAMES, PLAYER_SWINGS_SWORD_FRAMES_PER_ANIM)
+	: FixedLengthAnimation(PLAYER_SWINGS_SWORD_NB_FRAMES, PLAYER_SWINGS_SWORD_FRAMES_PER_ANIM)
 {
 	game->lockMapInput();
 }

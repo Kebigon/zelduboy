@@ -1,12 +1,12 @@
 #ifndef PLAYER_SWINGS_SWORD_ANIMATION_HPP
 #define PLAYER_SWINGS_SWORD_ANIMATION_HPP
 
-#include "../Animation.hpp"
+#include "animation/FixedLengthAnimation.hpp"
 
 #define PLAYER_SWINGS_SWORD_NB_FRAMES 6
 #define PLAYER_SWINGS_SWORD_FRAMES_PER_ANIM 2
 
-class PlayerSwingsSwordAnimation : public Animation
+class PlayerSwingsSwordAnimation : public FixedLengthAnimation
 {
 public:
 	PlayerSwingsSwordAnimation();
