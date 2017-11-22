@@ -9,8 +9,8 @@ void DroppedItemGraphicsComponent::draw(DroppedItem *item)
 	uint16_t itemX = item->getLocation()->getX();
 	uint16_t itemY = item->getLocation()->getY();
 
-	uint8_t displayItemX = itemX - getDisplayStartX();
-	uint8_t displayItemY = itemY - getDisplayStartY();
+	int16_t displayItemX = itemX - getDisplayStartX();
+	int16_t displayItemY = itemY - getDisplayStartY();
 
 	uint8_t frame = static_cast<uint8_t>(item->getType());
 
