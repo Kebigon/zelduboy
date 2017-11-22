@@ -2,6 +2,7 @@
 #define ENTITY_HPP
 
 #include "Location.hpp"
+#include "EntityType.hpp"
 #include <Arduboy2.h>
 
 class Entity
@@ -16,6 +17,7 @@ public:
 	virtual bool isPassable() const;
 	virtual void update() = 0;
 	virtual void draw() = 0;
+	virtual EntityType getType() const = 0;
 };
 
 #endif

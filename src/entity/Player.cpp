@@ -11,6 +11,11 @@ Player::Player(Location * location)
 	, direction(Direction::DOWN)
 {}
 
+EntityType Player::getType() const
+{
+	return EntityType::PLAYER;
+}
+
 Inventory * Player::getInventory() const
 {
 	return inventory;

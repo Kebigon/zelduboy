@@ -5,7 +5,12 @@ DroppedItem::DroppedItem(ItemStack *item, Location *location)
 	, item(item)
 {}
 
-ItemType DroppedItem::getType() const
+EntityType DroppedItem::getType() const
+{
+	return EntityType::DROPPED_ITEM;
+}
+
+ItemType DroppedItem::getItemType() const
 {
 	return item->getType();
 }

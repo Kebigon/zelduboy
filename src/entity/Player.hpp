@@ -42,6 +42,7 @@ public:
 	void setDirection(Direction direction);
 	virtual void update();
 	virtual void draw();
+	virtual EntityType getType() const;
 };
 
 #endif

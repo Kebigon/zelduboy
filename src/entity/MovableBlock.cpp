@@ -8,6 +8,11 @@ MovableBlock::MovableBlock(Location *location)
 	: Entity(location)
 {}
 
+EntityType MovableBlock::getType() const
+{
+	return EntityType::MOVABLE_BLOCK;
+}
+
 bool MovableBlock::isPassable() const
 {
 	return false;

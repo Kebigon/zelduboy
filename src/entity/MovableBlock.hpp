@@ -13,6 +13,7 @@ public:
 	virtual bool isPassable() const;
 	virtual void update();
 	virtual void draw();
+	virtual EntityType getType() const;
 };
 
 #endif

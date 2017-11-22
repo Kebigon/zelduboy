@@ -13,10 +13,11 @@ class DroppedItem : public Entity
 	ItemStack *item;
 public:
 	DroppedItem(ItemStack *item, Location *location);
-	ItemType getType() const;
+	ItemType getItemType() const;
 	ItemStack * getItemStack() const;
 	virtual void update();
 	virtual void draw();
+	virtual EntityType getType() const;
 };
 
 #endif
