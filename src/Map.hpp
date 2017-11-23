@@ -2,41 +2,43 @@
 #define MAP_HPP
 
 #include <stdint.h>
+#include "Room.hpp"
 
 class Map
 {
-	const uint8_t width, height;
-	const uint8_t * mapTiles;
-	const uint8_t * mapPassable;
+	const uint8_t nbRooms;
+	const Room *rooms;
+	uint8_t width;
+	uint8_t height;
 
 public:
-	Map(const uint8_t *mapt);
-
-	/** \brief
-	 * Width of the map in pixels
-	 */
-	uint16_t getWidth() const;
-
-	/** \brief
-	 * Height of the map in pixels
-	 */
-	uint16_t getHeight() const;
+	Map(Room *rooms, uint8_t nbRooms);
 
 	/** \brief
 	 * Width of the map in tiles
 	 */
-	uint8_t getTileWidth() const;
+	uint8_t getWidth() const;
 
 	/** \brief
 	 * Height of the map in tiles
 	 */
-	uint8_t getTileHeight() const;
+	uint8_t getHeight() const;
 
-	uint8_t getTile(uint8_t tileX, uint8_t tileY) const;
-	bool isPassable(uint8_t tileX, uint8_t tileY) const;
+	/** \brief
+	 * Width of the map in pixels
+	 */
+	uint16_t getPixelWidth() const;
+
+	/** \brief
+	 * Height of the map in pixels
+	 */
+	uint16_t getPixelHeight() const;
+
+	uint8_t getTile(uint8_t x, uint8_t y) const;
+	bool isPassable(uint8_t x, uint8_t y) const;
 
 private:
-	uint16_t getTileAddress(uint8_t, uint8_t) const;
+	Room* getRoom(uint8_t x, uint8_t y) const;
 };
 
 #endif

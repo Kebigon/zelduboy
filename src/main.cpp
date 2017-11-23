@@ -5,7 +5,8 @@
 #include "entity/MovableBlock.hpp"
 #include "Location.hpp"
 
-Map *mapHouse = new Map(mapHouseData);
+Room *room1 = new Room(0,0,room1Data);
+Map *mapHouse = new Map({room1}, 1);
 
 uint8_t frameCounter = 0;
 Arduboy2 arduboy;

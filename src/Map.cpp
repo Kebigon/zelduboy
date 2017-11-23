@@ -1,59 +1,71 @@
 #include "Map.hpp"
 
-#include <avr/pgmspace.h>
+#include <Arduboy2.h>
+#include "globals.h"
 
-Map::Map(const uint8_t * map)
-	: width(pgm_read_byte(map))
-	, height(pgm_read_byte(map + 1))
-	, mapTiles(map + 2)
-	, mapPassable(map + 2 + pgm_read_byte(map) * pgm_read_byte(map + 1))
-{}
-
-uint16_t Map::getWidth() const
+Map::Map(Room *rooms, uint8_t nbRooms)
+	: rooms(rooms)
+	,nbRooms(nbRooms)
 {
-	return width << 4;
+	uint8_t maxWidth = 0, maxHeight = 0;
+	for (int i = 0; i != nbRooms; i++)
+	{
+		Rect roomDimensions = rooms[i].getRoomRect();
+
+		if (maxWidth < roomDimensions.x + roomDimensions.width)
+			maxWidth = roomDimensions.x + roomDimensions.width;
+
+		if (maxHeight < roomDimensions.y + roomDimensions.height)
+			maxHeight = roomDimensions.y + roomDimensions.height;
+	}
+
+	width = maxWidth;
+	height = maxHeight;
 }
 
-uint16_t Map::getHeight() const
-{
-	return height << 4;
-}
-
-uint8_t Map::getTileWidth() const
+uint8_t Map::getWidth() const
 {
 	return width;
 }
 
-uint8_t Map::getTileHeight() const
+uint8_t Map::getHeight() const
 {
 	return height;
 }
 
-uint16_t Map::getTileAddress(uint8_t tileX, uint8_t tileY) const
+uint16_t Map::getPixelWidth() const
 {
-	return tileY * width + tileX;
+	return width << 4; // width * 16
 }
 
-uint8_t Map::getTile(uint8_t tileX, uint8_t tileY) const
+uint16_t Map::getPixelHeight() const
 {
-	// The player cannot walk outside of the map
-	if (tileX >= width || tileY >= height)
-		return 0;  // Default tile
-
-	uint8_t tileAddress = getTileAddress(tileX, tileY);
-
-	return pgm_read_byte(mapTiles + tileAddress);
+	return height << 4; // height * 16
 }
 
-bool Map::isPassable(uint8_t tileX, uint8_t tileY) const
+uint8_t Map::getTile(uint8_t x, uint8_t y) const
 {
-	// The player cannot walk outside of the map
-	if (tileX >= width || tileY >= height)
-		return false;
+	Room * room = getRoom(x, y);
+	if (room == nullptr)
+		return DEFAULT_TILE;
 
-	uint16_t arrayAddr = tileY * width + tileX;
-	uint16_t byteAddr = arrayAddr >> 3; // arrayAddr / 8
-	uint8_t bitAddr = 0x07 - (arrayAddr & 0x07);
+	return room->getTile(x, y);
+}
 
-	return (pgm_read_byte(mapPassable + byteAddr) >> bitAddr) & 0x01;
+bool Map::isPassable(uint8_t x, uint8_t y) const
+{
+	Room * room = getRoom(x, y);
+	if (room == nullptr)
+		return DEFAULT_PASSIBILITY;
+
+	return room->isPassable(x, y);
+}
+
+Room * Map::getRoom(uint8_t x, uint8_t y) const
+{
+	for (int i = 0; i != nbRooms; i++)
+		if (rooms[i].isInsideRoom(x, y))
+			return &rooms[i];
+
+	return nullptr;
 }

@@ -6,8 +6,10 @@
 
 #define MAP_HOUSE_ID 0
 
+
 extern Map *mapHouse;
-const unsigned char PROGMEM mapHouseData[]  =
+extern Room *room1;
+const unsigned char PROGMEM room1Data[]  =
 {
 	// width, height,
 	8, 8,
