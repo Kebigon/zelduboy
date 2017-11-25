@@ -11,6 +11,11 @@ Map * Location::getMap() const
 	return map;
 }
 
+Room * Location::getRoom() const
+{
+	return map->getRoom(getTileX(), getTileY());
+}
+
 uint16_t Location::getX() const
 {
 	return x;

@@ -36,8 +36,6 @@ public:
 
 	uint8_t getTile(uint8_t x, uint8_t y) const;
 	bool isPassable(uint8_t x, uint8_t y) const;
-
-private:
 	Room* getRoom(uint8_t x, uint8_t y) const;
 };
 

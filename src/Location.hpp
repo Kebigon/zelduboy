@@ -12,6 +12,7 @@ class Location
 public:
 	Location(Map *map, const uint16_t, const uint16_t);
 	Map * getMap() const;
+	Room * getRoom() const;
 	uint16_t getX() const;
 	uint16_t getY() const;
 	uint8_t getTileX() const;

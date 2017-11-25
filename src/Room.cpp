@@ -12,6 +12,16 @@ Room::Room(uint8_t roomX, uint8_t roomY,const uint8_t * roomData)
 	, roomY(roomY)
 {}
 
+uint8_t Room::getX() const
+{
+	return roomX;
+}
+
+uint8_t Room::getY() const
+{
+	return roomY;
+}
+
 uint8_t Room::getWidth() const
 {
 	return width;
@@ -20,6 +30,16 @@ uint8_t Room::getWidth() const
 uint8_t Room::getHeight() const
 {
 	return height;
+}
+
+uint16_t Room::getPixelX() const
+{
+	return roomX << 4; // roomX * 16
+}
+
+uint16_t Room::getPixelY() const
+{
+	return roomY << 4; // roomY * 16
 }
 
 uint16_t Room::getPixelWidth() const

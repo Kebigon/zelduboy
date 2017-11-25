@@ -5,11 +5,12 @@
 PlayerHorizontalPosition GraphicsComponent::getPlayerHorizontalPosition()
 {
 	Location *playerLocation = game->getPlayer()->getLocation();
-	uint16_t playerX = playerLocation->getX();
+	Room *playerRoom = playerLocation->getRoom();
+	uint16_t playerX = (playerLocation->getX() - playerRoom->getPixelX());
 
 	if (playerX < PLAYER_CENTER_POS_LEFT) // Close to left border of the map
 		return PlayerHorizontalPosition::LEFT;
-	else if (playerX > playerLocation->getMap()->getWidth() - PLAYER_CENTER_POS_RIGHT) // Close to the right border of the map
+	else if (playerX > playerRoom->getWidth() - PLAYER_CENTER_POS_RIGHT) // Close to the right border of the map
 		return PlayerHorizontalPosition::RIGHT;
 	else
 		return PlayerHorizontalPosition::CENTER;
@@ -18,11 +19,12 @@ PlayerHorizontalPosition GraphicsComponent::getPlayerHorizontalPosition()
 PlayerVerticalPosition GraphicsComponent::getPlayerVerticalPosition()
 {
 	Location *playerLocation = game->getPlayer()->getLocation();
-	uint16_t playerY = playerLocation->getY();
+	Room *playerRoom = playerLocation->getRoom();
+	uint16_t playerY = (playerLocation->getY() - playerRoom->getPixelY());
 
 	if (playerY < PLAYER_CENTER_POS_TOP) // Close to top border of the map
 		return PlayerVerticalPosition::TOP;
-	else if (playerY > playerLocation->getMap()->getHeight() - PLAYER_CENTER_POS_BOTTOM) // Close to the bottom border of the map
+	else if (playerY > playerRoom->getHeight() - PLAYER_CENTER_POS_BOTTOM) // Close to the bottom border of the map
 		return PlayerVerticalPosition::BOTTOM;
 	else
 		return PlayerVerticalPosition::CENTER;

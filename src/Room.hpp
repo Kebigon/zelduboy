@@ -15,14 +15,34 @@ public:
 	Room(uint8_t roomX, uint8_t roomY, const uint8_t *roomData);
 
 	/** \brief
-	 * Width of the room in tiles
+	 *	X position of the room
+	 */
+	uint8_t getX() const;
+
+	/** \brief
+	 *	Y position of the room
+	 */
+	uint8_t getY() const;
+
+	/** \brief
+	 * Width of the room
 	 */
 	uint8_t getWidth() const;
 
 	/** \brief
-	 * Height of the room in tiles
+	 * Height of the room
 	 */
 	uint8_t getHeight() const;
+
+	/** \brief
+	 *	X position of the room in pixels
+	 */
+	uint16_t getPixelX() const;
+
+	/** \brief
+	 *	Y position of the room in pixels
+	 */
+	uint16_t getPixelY() const;
 
 	/** \brief
 	 * Width of the room in pixels
