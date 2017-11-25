@@ -1,13 +1,13 @@
 #include "Game.hpp"
 
-#include "data/chunksdata.h"
+#include "generated/mapData.h"
 
 Game::Game()
 	: entities(20)
 	, toRemove(10)
 {
 	// TODO: load game state from EEPROM
-	Location * location = new Location(mapHouse, 16, 16);
+	Location * location = new Location(SPAWN_MAP, SPAWN_X << 4,  SPAWN_Y << 4);
 	player = new Player(location);
 }
 

@@ -3,14 +3,14 @@
 #include <Arduboy2.h>
 #include "globals.h"
 
-Map::Map(Room *rooms, uint8_t nbRooms)
+Map::Map(Room **rooms, uint8_t nbRooms)
 	: rooms(rooms)
 	,nbRooms(nbRooms)
 {
 	uint8_t maxWidth = 0, maxHeight = 0;
 	for (int i = 0; i != nbRooms; i++)
 	{
-		Rect roomDimensions = rooms[i].getRoomRect();
+		Rect roomDimensions = rooms[i]->getRoomRect();
 
 		if (maxWidth < roomDimensions.x + roomDimensions.width)
 			maxWidth = roomDimensions.x + roomDimensions.width;
@@ -64,8 +64,8 @@ bool Map::isPassable(uint8_t x, uint8_t y) const
 Room * Map::getRoom(uint8_t x, uint8_t y) const
 {
 	for (int i = 0; i != nbRooms; i++)
-		if (rooms[i].isInsideRoom(x, y))
-			return &rooms[i];
+		if (rooms[i]->isInsideRoom(x, y))
+			return rooms[i];
 
 	return nullptr;
 }

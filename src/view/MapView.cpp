@@ -1,7 +1,6 @@
 #include "MapView.hpp"
 
 #include "globals.h"
-#include "../data/chunksdata.h"
 #include "../data/bitmaps.h"
 
 #include "utils/DArray.hpp"

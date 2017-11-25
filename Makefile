@@ -7,3 +7,8 @@ format:
 	@find src/* -type f -exec uncrustify -c uncrustify.cfg -l CPP --no-backup -q {} \;
 	@find test/*.cpp -type f -exec uncrustify -c uncrustify.cfg -l CPP --no-backup -q {} \;
 
+generate:
+	@echo "Removing src/generated content..."
+	@rm -f src/generated/*
+	@echo "Generating..."
+	@java -ea -jar zelduboy-tiled-map-converter-0.1.jar tiled/map.json src/generated

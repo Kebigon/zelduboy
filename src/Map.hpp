@@ -7,12 +7,12 @@
 class Map
 {
 	const uint8_t nbRooms;
-	const Room *rooms;
+	const Room **rooms;
 	uint8_t width;
 	uint8_t height;
 
 public:
-	Map(Room *rooms, uint8_t nbRooms);
+	Map(Room **rooms, uint8_t nbRooms);
 
 	/** \brief
 	 * Width of the map in tiles

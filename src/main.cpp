@@ -1,12 +1,9 @@
 #include <Arduboy2.h>
 #include "Game.hpp"
-#include "data/chunksdata.h"
 #include "entity/DroppedItem.hpp"
 #include "entity/MovableBlock.hpp"
 #include "Location.hpp"
-
-Room *room1 = new Room(0,0,room1Data);
-Map *mapHouse = new Map({room1}, 1);
+#include "generated/mapData.h"
 
 uint8_t frameCounter = 0;
 Arduboy2 arduboy;
@@ -23,9 +20,9 @@ void setup()
 
 	game = new Game();
 
-	DroppedItem *item = new DroppedItem(new ItemStack(ItemType::SWORD), new Location(mapHouse, 48, 48));
+	DroppedItem *item = new DroppedItem(new ItemStack(ItemType::SWORD), new Location(SPAWN_MAP, 48, 48));
 	game->addEntity(item);
-	MovableBlock *block = new MovableBlock(new Location(mapHouse, 64, 48));
+	MovableBlock *block = new MovableBlock(new Location(SPAWN_MAP, 64, 48));
 	game->addEntity(block);
 }
 
