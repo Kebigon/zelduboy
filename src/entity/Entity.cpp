@@ -2,13 +2,25 @@
 
 #include "globals.h"
 
-Entity::Entity(Location * location)
-	: location(location)
+Entity::Entity(uint8_t spawnX, uint8_t spawnY)
+	: spawnX(spawnX)
+	, spawnY(spawnY)
 {}
+
+void Entity::spawn() {
+	if (state == nullptr)
+		state = new EntityState();
+}
+
+void Entity::despawn()
+{
+	delete state;
+	state = nullptr;
+}
 
 Location * Entity::getLocation() const
 {
-	return location;
+	return state != nullptr ? state->getLocation() : nullptr;
 }
 
 // TODO: At the moment all entites are 16*16 for test, to change in the future
